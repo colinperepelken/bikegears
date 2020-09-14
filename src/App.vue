@@ -1,19 +1,21 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Header></Header>
+    <MainPanel></MainPanel>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+import MainPanel from "./components/MainPanel";
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  name: "App",
+  title: "App title",
+  components: { Header, Footer, MainPanel },
+};
 </script>
 
 <style>
@@ -22,7 +24,11 @@ export default {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+}
+
+html, body {
+  height: 100%;
+  background: url('assets/patrick-hendry-qDBbM9Erwo4-unsplash.jpg');
+  background-size: cover;
 }
 </style>
