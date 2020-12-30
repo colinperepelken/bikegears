@@ -1,17 +1,17 @@
 <template>
   <div class="container">
-    <div class="table-container">
+    <div class="table-container" v-for="(bike, index) in bikeParameters.bikes" :key="index">
       <table class="table is-striped is-hoverable">
         <thead>
         <tr>
           <th></th>
-          <th v-for="(chainring, index) in bikeParameters.chainrings" :key="index">{{chainring}} tooth chainring</th>
+          <th v-for="(chainring, index) in bike.chainrings" :key="index">{{chainring}} tooth chainring</th>
         </tr>
         </thead>
         <tbody>
-        <tr v-for="(cog, index) in bikeParameters.cassetteCogs" :key="index">
+        <tr v-for="(cog, index) in bike.cassetteCogs" :key="index">
           <th>{{cog}}</th>
-          <td v-for="(chainring, index) in bikeParameters.chainrings" :key="index">{{computeGearRatio(chainring, cog)}}</td>
+          <td v-for="(chainring, index) in bike.chainrings" :key="index">{{computeGearRatio(chainring, cog)}}</td>
         </tr>
         </tbody>
       </table>
