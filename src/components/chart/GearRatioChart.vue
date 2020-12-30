@@ -26,23 +26,25 @@ export default {
     chartdata() {
       if (this.loaded) {
         return {
-          datasets: this.bikeParameters.chainrings.map(chainring => {
-            return {
-              label: chainring + ' tooth chainring',
-              borderColor: '#3298dc', // TODO this should be different for each dataset
-              pointBackgroundColor: "#00d1b2",
-              // pointBorderColor: "#474647",
-              // hoverBackgroundColor: "#8ec63f",
-              data: this.bikeParameters.cassetteCogs.map(cog => {
-                return {
-                  x: this.computeGearRatio(chainring, cog),
-                  y: cog
-                }
-              }),
-              fill: false,
-              showLine: true
-            }
-          })
+          datasets: this.bikeParameters.bikes.map(bike => {
+            return bike.chainrings.map(chainring => {
+              return {
+                label: chainring + ' tooth chainring',
+                borderColor: '#3298dc', // TODO this should be different for each dataset/bike
+                pointBackgroundColor: "#00d1b2",
+                // pointBorderColor: "#474647",
+                // hoverBackgroundColor: "#8ec63f",
+                data: bike.cassetteCogs.map(cog => {
+                  return {
+                    x: this.computeGearRatio(chainring, cog),
+                    y: cog
+                  }
+                }),
+                fill: false,
+                showLine: true
+              }
+            })
+          }).flat()
         };
       }
 
