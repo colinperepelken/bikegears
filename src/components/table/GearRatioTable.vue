@@ -5,7 +5,7 @@
         <thead>
         <tr>
           <th></th>
-          <th v-for="(chainring, index) in bikeParameters.chainrings" :key="index">{{chainring}}</th>
+          <th v-for="(chainring, index) in bikeParameters.chainrings" :key="index">{{chainring}} tooth chainring</th>
         </tr>
         </thead>
         <tbody>

@@ -86,10 +86,11 @@ export default {
   data() {
     return {
       chainrings: [
-        {value: 36}
+        {value: 32},
+        {value: 44}
       ],
       cassetteMin: 11,
-      cassetteMax: 50,
+      cassetteMax: 42,
       maxNumChainrings: 3
     }
   },

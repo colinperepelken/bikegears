@@ -1,8 +1,8 @@
 <script>
-import {Line} from 'vue-chartjs'
+import {Scatter} from 'vue-chartjs'
 
 export default {
-  extends: Line,
+  extends: Scatter,
   props: {
     chartdata: {
       type: Object,

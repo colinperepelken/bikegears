@@ -34,7 +34,7 @@ export default {
   padding-bottom: 4rem;
 
   .icon {
-    margin-right: 1rem;
+    margin-right: .4rem;
   }
 }
 </style>
