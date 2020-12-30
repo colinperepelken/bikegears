@@ -1,5 +1,5 @@
 <template>
-  <div class="columns is-centered">
+  <div class="columns is-centered" @change="updateBike">
     <div class="column is-one-third-desktop">
       <!--          <img src="../../assets/crankset.png">-->
       <div class="field">
@@ -85,14 +85,17 @@ export default {
     removeChainring(index) {
       this.chainrings.splice(index, 1);
     },
+    updateBike() {
+      this.$emit('changed', {
+        chainrings: this.chainrings,
+        cassetteMin: this.cassetteMin,
+        cassetteMax: this.cassetteMax
+      });
+    }
   },
   mounted() {
-    this.$emit('changed', {
-      chainrings: this.chainrings,
-      cassetteMin: this.cassetteMin,
-      cassetteMax: this.cassetteMax
-    });
-  }
+    this.updateBike();
+  },
 }
 </script>
 
