@@ -1,0 +1,15 @@
+@import 'fonts';
+@import 'variables';
+@import '~bulma';
+
+.title {
+  font-family: 'Frijole', cursive;
+}
+
+#app {
+  font-family: $family-primary;
+}
+
+html {
+  scroll-behavior: smooth;
+}

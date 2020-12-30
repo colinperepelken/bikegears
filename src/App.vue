@@ -1,20 +1,32 @@
 <template>
   <div id="app">
-    <Header></Header>
-    <MainPanel></MainPanel>
+    <Hero></Hero>
+    <BikeParameters @calculate="calculate"></BikeParameters>
+    <Results ref="results" :bikeParameters="bikeParameters"></Results>
     <Footer></Footer>
   </div>
 </template>
 
 <script>
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import MainPanel from "./components/MainPanel";
 
+import Hero from "@/components/section/Hero";
+import BikeParameters from "@/components/section/BikeParameters";
+import Results from "@/components/section/Results";
+import Footer from "@/components/Footer";
 export default {
   name: "App",
-  title: "App title",
-  components: { Header, Footer, MainPanel },
+  components: {Footer, Results, BikeParameters, Hero },
+  data() {
+    return {
+      bikeParameters: {}
+    }
+  },
+  methods: {
+    calculate(data) {
+      this.bikeParameters = data;
+      this.$refs.results.$el.scrollIntoView();
+    }
+  }
 };
 </script>
 
@@ -28,7 +40,6 @@ export default {
 
 html, body {
   height: 100%;
-  background: url('assets/patrick-hendry-qDBbM9Erwo4-unsplash.jpg');
   background-size: cover;
 }
 </style>
