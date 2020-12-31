@@ -30,8 +30,8 @@ export default {
             return bike.chainrings.map(chainring => {
               return {
                 label: chainring + ' tooth chainring',
-                borderColor: '#3298dc', // TODO this should be different for each dataset/bike
-                pointBackgroundColor: "#00d1b2",
+                borderColor: bike.color,
+                pointBackgroundColor: bike.color,
                 // pointBorderColor: "#474647",
                 // hoverBackgroundColor: "#8ec63f",
                 data: bike.cassetteCogs.map(cog => {
@@ -68,6 +68,8 @@ export default {
             },
             stacked: true,
             ticks: {
+              min: 5,
+              max: 60,
               reverse: true
             }
           }],
@@ -87,7 +89,7 @@ export default {
   },
   methods: {
     computeGearRatio(chainring, cog) {
-      return (chainring / cog).toFixed(2);
+      return parseFloat((chainring / cog).toFixed(2));
     }
   },
 }
