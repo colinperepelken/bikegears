@@ -1,24 +1,24 @@
 <template>
-  <div class="columns is-centered" @change="updateBike">
+  <div v-if="active" class="columns is-centered" @change="updateBike">
     <div class="column is-one-third-desktop">
       <!--          <img src="../../assets/crankset.png">-->
       <div class="field">
         <label class="label">Chainrings</label>
-        <div class="control chainring-control" v-for="(chainring, index) in chainrings" :key="index">
+        <div class="control chainring-control" v-for="(chainring, index) in bikeData.chainrings" :key="index">
           <div class="select">
             <select v-model="chainring.value">
               <option v-for="(option, index) in chainringOptions" :key="index" :value="option">{{ option }} tooth
               </option>
             </select>
           </div>
-          <a v-if="chainrings.length > 1" class="remove-chainring-btn has-text-danger-dark" @click="removeChainring">
+          <a v-if="bikeData.chainrings.length > 1" class="remove-chainring-btn has-text-danger-dark" @click="removeChainring">
                 <span class="icon is-small">
                 <i class="fas fa-times"></i>
               </span>
           </a>
 
         </div>
-        <button @click="addChainring" :disabled="chainrings.length >= maxNumChainrings"
+        <button @click="addChainring" :disabled="bikeData.chainrings.length >= maxNumChainrings"
                 class="button is-small is-info" id="add-chainring">
               <span class="icon is-small">
                 <i class="fas fa-plus"></i>
@@ -33,7 +33,7 @@
         <label class="label">Min. Cassette Cog Tooth Count</label>
         <div class="control">
           <div class="select">
-            <select v-model="cassetteMin">
+            <select v-model="bikeData.cassetteMin">
               <option v-for="(cog, index) in cassetteOptions" :key="index" :value="cog">{{ cog }} tooth</option>
             </select>
           </div>
@@ -44,7 +44,7 @@
         <label class="label">Max. Cassette Cog Tooth Count</label>
         <div class="control">
           <div class="select">
-            <select v-model="cassetteMax">
+            <select v-model="bikeData.cassetteMax">
               <option v-for="(cog, index) in cassetteOptions" :key="index" :value="cog">{{ cog }} tooth</option>
             </select>
           </div>
@@ -59,14 +59,17 @@ import _ from "lodash";
 
 export default {
   name: "GearRatioForm",
+  props: ['bike', 'active'],
   data() {
     return {
-      chainrings: [
-        {value: 32},
-        {value: 44}
-      ],
-      cassetteMin: 11,
-      cassetteMax: 42,
+      bikeData: {
+        chainrings: [
+          {value: 32},
+          {value: 44}
+        ],
+        cassetteMin: 11,
+        cassetteMax: 42,
+      },
       maxNumChainrings: 3
     }
   },
@@ -76,26 +79,25 @@ export default {
     },
     chainringOptions() {
       return _.range(5, 60, 1)
-    }
+    },
   },
   methods: {
     addChainring() {
-      this.chainrings.push({value: 36});
+      this.bikeData.chainrings.push({value: 36});
     },
     removeChainring(index) {
-      this.chainrings.splice(index, 1);
+      this.bikeData.chainrings.splice(index, 1);
     },
     updateBike() {
-      this.$emit('changed', {
-        chainrings: this.chainrings,
-        cassetteMin: this.cassetteMin,
-        cassetteMax: this.cassetteMax
-      });
-    }
+      this.$emit('bikeChanged', this.bikeData);
+    },
   },
   mounted() {
-    this.updateBike();
-  },
+    // Set defaults from parent
+    // this.bikeData = this.bike;
+
+    // this.updateBike();
+  }
 }
 </script>
 
