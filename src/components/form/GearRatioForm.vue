@@ -84,9 +84,11 @@ export default {
   methods: {
     addChainring() {
       this.bikeData.chainrings.push({value: 36});
+      this.updateBike();
     },
     removeChainring(index) {
       this.bikeData.chainrings.splice(index, 1);
+      this.updateBike();
     },
     updateBike() {
       this.$emit('bikeChanged', this.bikeData);

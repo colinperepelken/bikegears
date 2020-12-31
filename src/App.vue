@@ -18,7 +18,7 @@ export default {
   components: {Footer, Results, BikeParameters, Hero },
   data() {
     return {
-      bikeParameters: {}
+      bikeParameters: {bikes: []}
     }
   },
   methods: {

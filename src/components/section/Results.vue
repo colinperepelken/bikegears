@@ -4,8 +4,8 @@
       <h2 class="title is-4">Results</h2>
 
       <GearRatioChart :bikeParameters="bikeParameters"></GearRatioChart>
-      <GearRatioTable :bikeParameters="bikeParameters"></GearRatioTable>
     </div>
+    <GearRatioTable :bikes="bikeParameters.bikes"></GearRatioTable>
   </div>
 </template>
 

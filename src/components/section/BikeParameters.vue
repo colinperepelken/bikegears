@@ -125,6 +125,7 @@ export default {
 
   li a {
     opacity: 50%;
+    color: white;
   }
 }
 </style>
