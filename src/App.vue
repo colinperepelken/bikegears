@@ -3,6 +3,15 @@
     <Hero></Hero>
     <BikeParameters @calculate="calculate"></BikeParameters>
     <Results ref="results" :bikeParameters="bikeParameters"></Results>
+    <div class="container mt-5">
+      <Message>
+        <template v-slot:header>
+          <p>Confused?</p>
+        </template>
+        The <strong>gear ratio</strong> is found by dividing the number of teeth on a chainring by the number of teeth on a cassette cog.
+        Visit the <a href="#">LEARN</a> section of this site which explains how to determine what chainrings and cassette you have on your bike.
+      </Message>
+    </div>
     <Footer></Footer>
   </div>
 </template>
@@ -13,9 +22,10 @@ import Hero from "@/components/section/Hero";
 import BikeParameters from "@/components/section/BikeParameters";
 import Results from "@/components/section/Results";
 import Footer from "@/components/Footer";
+import Message from "@/components/Message";
 export default {
   name: "App",
-  components: {Footer, Results, BikeParameters, Hero },
+  components: {Message, Footer, Results, BikeParameters, Hero },
   data() {
     return {
       bikeParameters: {bikes: []}
