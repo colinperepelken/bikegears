@@ -8,6 +8,7 @@
         <strong>Bike Gearing Calculator</strong> by <a href="https://colin.perepelken.ca">Colin Perepelken</a> &#169;
         {{ currentYear }}
       </p>
+      <p><i>Made in Canada</i> <span class="icon has-text-danger"><i class="fab fa-canadian-maple-leaf"></i></span></p>
     </div>
   </footer>
 </template>
