@@ -3,9 +3,14 @@
     <div class="box">
       <h2 class="title is-4">Bike Settings</h2>
 
-      <div class="tabs is-centered" v-if="bikes.length > 1">
+      <div class="tabs is-centered is-toggle is-fullwidth" v-if="bikes.length > 1">
         <ul>
-          <li v-for="(bike, index) in bikes" :key="index" :class="{'is-active': index === activeIndex}"><a @click="changeBike(index)">Bike #{{index + 1}}</a></li>
+          <li v-for="(bike, index) in bikes" :key="index" :class="{'is-active': index === activeIndex}">
+            <a @click="changeBike(index)">
+              <span>Bike #{{index + 1}}</span>
+              <span @click.stop="removeBike(index)" class="icon is-small remove-bike-btn"><i class="fas fa-times" aria-hidden="true"></i></span>
+            </a>
+          </li>
         </ul>
       </div>
 
@@ -69,8 +74,13 @@ export default {
       this.bikes.push(this.bikes.slice(-1)[0]);
       this.activeIndex = this.bikes.length - 1;
     },
-    removeBike() {
-
+    removeBike(index) {
+      if (this.bikes[index - 1] !== undefined) {
+        this.activeIndex = index - 1;
+      } else {
+        this.activeIndex = 0;
+      }
+      this.bikes.splice(index, 1);
     },
     changeBike(index) {
       this.activeIndex = index;
@@ -85,5 +95,10 @@ export default {
 <style scoped lang="scss">
 .container {
   margin-top: 1rem;
+}
+
+.remove-bike-btn {
+  position: absolute;
+  right: .8rem;
 }
 </style>
