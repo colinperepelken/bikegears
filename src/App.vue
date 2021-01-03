@@ -6,7 +6,14 @@
     <div class="container mt-5">
       <Message>
         <template v-slot:header>
-          <p>Confused?</p>
+          <p>
+            <span class="icon">
+              <i class="fas fa-info-circle"></i>
+            </span>
+            <span>
+              What are gear ratios?
+            </span>
+          </p>
         </template>
         The <strong>gear ratio</strong> is found by dividing the number of teeth on a chainring by the number of teeth on a cassette cog.
         Visit the <a href="#">LEARN</a> section of this site which explains how to determine what chainrings and cassette you have on your bike.
