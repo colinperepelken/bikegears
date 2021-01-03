@@ -4,25 +4,21 @@
       <nav class="navbar">
         <div class="container">
           <div class="navbar-brand">
-            <a href="#" class="navbar-item">
+            <a href="/" class="navbar-item">
               <h1 class="title is-4">Bike Gearing Calculator</h1>
             </a>
           </div>
           <div id="navbarMenuHeroC" class="navbar-menu">
             <div class="navbar-end">
-              <a class="navbar-item is-active">
-                Calculator
-              </a>
-              <a class="navbar-item">
-                Learn
-              </a>
+              <router-link to="/" :class="{'navbar-item': true, 'is-active': isActivePath('/')}">Calculator</router-link>
+              <router-link to="/learn" :class="{'navbar-item': true, 'is-active': isActivePath('/learn')}">Learn</router-link>
               <span class="navbar-item">
-              <a class="button is-success is-inverted">
-                <span class="icon">
-                  <i class="fas fa-coffee"></i>
-                </span>
-                <span>Donate</span>
-              </a>
+<!--              <a class="button is-success is-inverted">-->
+<!--                <span class="icon">-->
+<!--                  <i class="fas fa-coffee"></i>-->
+<!--                </span>-->
+<!--                <span>Donate</span>-->
+<!--              </a>-->
             </span>
             </div>
           </div>
@@ -70,6 +66,9 @@ export default {
   methods: {
     calculationChanged() {
       this.$emit('calculationChanged', this.currentType);
+    },
+    isActivePath(path) {
+      return this.$route.path === path;
     }
   }
 }

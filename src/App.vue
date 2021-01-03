@@ -1,8 +1,7 @@
 <template>
   <div id="app">
     <Hero @calculationChanged="calculationChanged"></Hero>
-    <BikeParameters @calculate="calculate" :calculationType="calculationType"></BikeParameters>
-    <component :is="calculationType.results" :bikeParameters="bikeParameters"></component>
+    <router-view :calculationType="calculationType"></router-view>
     <Footer></Footer>
   </div>
 </template>
@@ -12,21 +11,16 @@
 import Hero from "@/components/section/Hero";
 import Footer from "@/components/Footer";
 import {CALCULATION_TYPES} from "@/constants";
-import BikeParameters from "@/components/section/BikeParameters";
 
 export default {
   name: "App",
-  components: {BikeParameters, Footer, Hero },
+  components: {Footer, Hero },
   data() {
     return {
-      bikeParameters: {bikes: []},
       calculationType: CALCULATION_TYPES[0]
     }
   },
   methods: {
-    calculate(data) {
-      this.bikeParameters = data;
-    },
     calculationChanged(typeId) {
       this.calculationType = CALCULATION_TYPES.filter(type => type.id === typeId)[0];
     }
