@@ -42,6 +42,7 @@
 
 <script>
 import {CALCULATION_TYPES} from "@/constants";
+import {mapMutations} from 'vuex';
 
 export default {
   name: "Hero",
@@ -64,8 +65,9 @@ export default {
     this.calculationChanged();
   },
   methods: {
+    ...mapMutations(['setCalculationType']),
     calculationChanged() {
-      this.$emit('calculationChanged', this.currentType);
+      this.setCalculationType(CALCULATION_TYPES.filter(type => type.id === this.currentType)[0]);
     },
     isActivePath(path) {
       return this.$route.path === path;

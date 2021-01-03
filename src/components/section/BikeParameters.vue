@@ -5,7 +5,7 @@
 
       <div class="tabs is-centered is-toggle is-fullwidth" v-if="bikes.length > 1">
         <ul>
-          <li v-for="(bike, index) in bikes" :key="index" :class="{'is-active': index === activeIndex}">
+          <li v-for="(bike, index) in bikes" :key="index" :class="{'is-active': index === activeBikeIndex}">
             <a @click="changeBike(index)" :style="getTabStyle(index)">
               <span>Bike #{{index + 1}}</span>
               <span @click.stop="removeBike(index)" class="icon is-small remove-bike-btn"><i class="fas fa-times" aria-hidden="true"></i></span>
@@ -14,7 +14,7 @@
         </ul>
       </div>
 
-      <component :is="calculationType.form" v-for="(bike, index) in bikes" :bike="bike" :active="index === activeIndex" :key="index" @bikeChanged="updateBike"></component>
+      <component :is="calculationType.form" v-for="(bike, index) in bikes" :bike="bike" :active="index === activeBikeIndex" :key="index" @bikeChanged="updateBike"></component>
 
       <div class="container has-text-centered">
         <button @click="calculate" class="button is-primary is-medium is-rounded">
@@ -38,10 +38,13 @@
 <script>
 import _ from 'lodash';
 import {BIKE_COLORS} from "@/constants";
+import {mapMutations, mapState} from 'vuex';
 
 export default {
   name: "BikeParameters",
-  props: ['calculationType'],
+  computed: {
+    ...mapState(['activeBikeIndex', 'calculationType'])
+  },
   data() {
     return {
       // Default bike settings
@@ -53,12 +56,12 @@ export default {
         cassetteMin: 11,
         cassetteMax: 42,
       }],
-      activeIndex: 0,
       availableBikeColors: BIKE_COLORS,
       maxBikes: 5
     }
   },
   methods: {
+    ...mapMutations(['removeBike', 'addBike', 'updateBike', 'changeBike']),
     calculate() {
       this.$emit('calculate', {
         bikes: this.bikes.map(bike => {
@@ -69,28 +72,6 @@ export default {
           };
         })
       });
-    },
-    updateBike(payload) {
-      this.bikes[this.activeIndex] = {...this.bikes[this.activeIndex], ...payload};
-    },
-    addBike() {
-      this.bikes.push({
-        ...this.bikes.slice(-1)[0]
-      });
-      this.activeIndex = this.bikes.length - 1;
-      this.bikes[this.activeIndex].color = this.availableBikeColors.pop();
-    },
-    removeBike(index) {
-      if (this.bikes[index - 1] !== undefined) {
-        this.activeIndex = index - 1;
-      } else {
-        this.activeIndex = 0;
-      }
-      this.availableBikeColors.push(this.bikes[index].color);
-      this.bikes.splice(index, 1);
-    },
-    changeBike(index) {
-      this.activeIndex = index;
     },
     getTabStyle(index) {
       return {

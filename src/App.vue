@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <Hero @calculationChanged="calculationChanged"></Hero>
-    <router-view :calculationType="calculationType"></router-view>
+    <Hero></Hero>
+    <router-view></router-view>
     <Footer></Footer>
   </div>
 </template>
@@ -10,21 +10,10 @@
 
 import Hero from "@/components/section/Hero";
 import Footer from "@/components/Footer";
-import {CALCULATION_TYPES} from "@/constants";
 
 export default {
   name: "App",
   components: {Footer, Hero },
-  data() {
-    return {
-      calculationType: CALCULATION_TYPES[0]
-    }
-  },
-  methods: {
-    calculationChanged(typeId) {
-      this.calculationType = CALCULATION_TYPES.filter(type => type.id === typeId)[0];
-    }
-  }
 };
 </script>
 
