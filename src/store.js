@@ -7,7 +7,17 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
     state: {
         calculationType: CALCULATION_TYPES[0],
-        bikes: [],
+        bikes: [
+            // Default bike settings
+            {
+                chainrings: [
+                    {value: 32},
+                    {value: 44},
+                ],
+                cassetteMin: 11,
+                cassetteMax: 42,
+            }
+        ],
         activeBikeIndex: 0,
         availableBikeColors: BIKE_COLORS
     },
@@ -19,23 +29,26 @@ export const store = new Vuex.Store({
             state.bikes.push({
                 ...state.bikes.slice(-1)[0]
             });
-            state.activeIndex = state.bikes.length - 1;
-            state.bikes[state.activeIndex].color = state.availableBikeColors.pop();
+            state.activeBikeIndex = state.bikes.length - 1;
+            state.bikes[state.activeBikeIndex].color = state.availableBikeColors.pop();
         },
         removeBike(state, index) {
             if (state.bikes[index - 1] !== undefined) {
-                state.activeIndex = index - 1;
+                state.activeBikeIndex = index - 1;
             } else {
-                state.activeIndex = 0;
+                state.activeBikeIndex = 0;
             }
             state.availableBikeColors.push(state.bikes[index].color);
             state.bikes.splice(index, 1);
         },
         updateBike(state, bike) {
-            state.bikes[state.activeIndex] = {...state.bikes[state.activeIndex], ...bike};
+            state.bikes[state.activeBikeIndex] = {...state.bikes[state.activeBikeIndex], ...bike};
         },
         changeBike(state, index) {
             state.activeBikeIndex = index;
+        },
+        setBikeColor(state, index) {
+            state.bikes[index].color = state.availableBikeColors.pop();
         }
     }
 });

@@ -1,5 +1,6 @@
 <template>
   <section class="hero is-info is-medium is-bold">
+
     <div class="hero-head">
       <nav class="navbar">
         <div class="container">

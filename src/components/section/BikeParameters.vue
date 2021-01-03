@@ -37,31 +37,20 @@
 
 <script>
 import _ from 'lodash';
-import {BIKE_COLORS} from "@/constants";
 import {mapMutations, mapState} from 'vuex';
 
 export default {
   name: "BikeParameters",
   computed: {
-    ...mapState(['activeBikeIndex', 'calculationType'])
+    ...mapState(['activeBikeIndex', 'calculationType', 'availableBikeColors', 'bikes'])
   },
   data() {
     return {
-      // Default bike settings
-      bikes: [{
-        chainrings: [
-          {value: 32},
-          {value: 44},
-        ],
-        cassetteMin: 11,
-        cassetteMax: 42,
-      }],
-      availableBikeColors: BIKE_COLORS,
       maxBikes: 5
     }
   },
   methods: {
-    ...mapMutations(['removeBike', 'addBike', 'updateBike', 'changeBike']),
+    ...mapMutations(['removeBike', 'addBike', 'updateBike', 'changeBike', 'setBikeColor']),
     calculate() {
       this.$emit('calculate', {
         bikes: this.bikes.map(bike => {
@@ -80,7 +69,12 @@ export default {
     }
   },
   mounted() {
-    this.bikes[0].color = this.availableBikeColors.pop();
+
+    // Ensure the initial bike colour is set when this is mounted for the first time
+    if (this.bikes[0].color === undefined) {
+      this.setBikeColor(0);
+    }
+
     this.calculate();
   },
 }
