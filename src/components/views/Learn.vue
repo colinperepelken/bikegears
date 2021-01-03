@@ -7,9 +7,11 @@
 </template>
 
 <script>
+import {mapState} from "vuex";
+
 export default {
   name: "Learn",
-  props: ['calculationType']
+  computed: mapState(['calculationType'])
 }
 </script>
 
