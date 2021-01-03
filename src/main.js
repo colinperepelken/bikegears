@@ -7,6 +7,7 @@ import VueLodash from 'vue-lodash'
 import lodash from 'lodash'
 import Calculator from "@/components/views/Calculator";
 import Learn from "@/components/views/Learn";
+import {store} from './store';
 
 Vue.config.productionTip = false;
 
@@ -25,5 +26,6 @@ const router = new VueRouter({
 
 new Vue({
     render: h => h(App),
-    router: router
+    router: router,
+    store: store
 }).$mount('#app');
