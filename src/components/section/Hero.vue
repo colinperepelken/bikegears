@@ -33,8 +33,8 @@
     <div class="hero-body">
       <div class="container has-text-centered">
         <div class="select is-large is-rounded is-primary">
-          <select>
-            <option selected>Gear ratios</option>
+          <select v-model="currentType" @change="calculationChanged">
+            <option :key="option.value" v-for="option in calculationOptions" :value="option.value">{{option.text}}</option>
             <option disabled>More coming soon...</option>
           </select>
         </div>
@@ -45,8 +45,33 @@
 </template>
 
 <script>
+import {CALCULATION_TYPES} from "@/constants";
+
 export default {
-name: "Hero"
+  name: "Hero",
+  computed: {
+    calculationOptions() {
+      return CALCULATION_TYPES.map(type => {
+        return {
+          value: type.id,
+          text: type.name
+        }
+      });
+    }
+  },
+  data() {
+    return {
+      currentType: CALCULATION_TYPES[0].id
+    }
+  },
+  mounted() {
+    this.calculationChanged();
+  },
+  methods: {
+    calculationChanged() {
+      this.$emit('calculationChanged', this.currentType);
+    }
+  }
 }
 </script>
 

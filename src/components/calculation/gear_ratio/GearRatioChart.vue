@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import ScatterChart from "@/components/chart/base/ScatterChart";
+import ScatterChart from "@/components/chart/ScatterChart";
 import _ from 'lodash';
 
 export default {

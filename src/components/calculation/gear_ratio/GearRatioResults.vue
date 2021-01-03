@@ -10,13 +10,14 @@
 </template>
 
 <script>
-import GearRatioChart from "@/components/chart/GearRatioChart";
-import GearRatioTable from "@/components/table/GearRatioTable";
+import GearRatioChart from "@/components/calculation/gear_ratio/GearRatioChart";
+import GearRatioTable from "@/components/calculation/gear_ratio/GearRatioTable";
+import CalculationResults from "@/components/calculation/base/CalculationResults";
 
 export default {
-  name: "Results",
+  name: "GearRatioResults",
   components: {GearRatioTable, GearRatioChart},
-  props: ['bikeParameters']
+  mixins: [CalculationResults]
 }
 </script>
 

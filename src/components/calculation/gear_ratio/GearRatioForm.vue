@@ -56,10 +56,11 @@
 
 <script>
 import _ from "lodash";
+import CalculationForm from "@/components/calculation/base/CalculationForm";
 
 export default {
   name: "GearRatioForm",
-  props: ['bike', 'active'],
+  mixins: [CalculationForm],
   data() {
     return {
       bikeData: {
@@ -90,15 +91,9 @@ export default {
       this.bikeData.chainrings.splice(index, 1);
       this.updateBike();
     },
-    updateBike() {
-      this.$emit('bikeChanged', this.bikeData);
-    },
   },
   mounted() {
-    // Set defaults from parent
-    // this.bikeData = this.bike;
-
-    // this.updateBike();
+    this.updateBike();
   }
 }
 </script>

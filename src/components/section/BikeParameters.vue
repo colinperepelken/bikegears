@@ -14,7 +14,7 @@
         </ul>
       </div>
 
-      <GearRatioForm v-for="(bike, index) in bikes" :bike="bike" :active="index === activeIndex" :key="index" @bikeChanged="updateBike"></GearRatioForm>
+      <component :is="calculationType.form" v-for="(bike, index) in bikes" :bike="bike" :active="index === activeIndex" :key="index" @bikeChanged="updateBike"></component>
 
       <div class="container has-text-centered">
         <button @click="calculate" class="button is-primary is-medium is-rounded">
@@ -37,12 +37,11 @@
 
 <script>
 import _ from 'lodash';
-import GearRatioForm from "@/components/form/GearRatioForm";
 import {BIKE_COLORS} from "@/constants";
 
 export default {
   name: "BikeParameters",
-  components: {GearRatioForm},
+  props: ['calculationType'],
   data() {
     return {
       // Default bike settings
