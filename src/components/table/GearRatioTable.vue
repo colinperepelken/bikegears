@@ -5,10 +5,10 @@
       <div class="column is-full-mobile is-half-tablet" :style="{'border-color': bike.color}" v-for="(bike, index) in bikes" :key="index">
         <div class="table-container">
           <h3 class="title is-5" :style="{color: bike.color}">Bike #{{index+1}}</h3>
-          <table class="table is-narrow is-striped is-hoverable">
+          <table class="table is-narrow is-striped is-hoverable is-bordered">
             <thead>
             <tr>
-              <th></th>
+              <th><span class="icon"><i class="fas fa-arrow-circle-down"></i></span> Cassette cog</th>
               <th v-for="(chainring, index) in bike.chainrings" :key="index">{{chainring}} tooth chainring</th>
             </tr>
             </thead>
@@ -44,6 +44,10 @@ export default {
 <style scoped lang="scss">
 table {
   width: 100%;
+
+  thead > tr > th:first-child {
+    background-color: #ededed;
+  }
 }
 
 .table-container {
