@@ -91,9 +91,6 @@ export default {
       this.bikeData.chainrings.splice(index, 1);
       this.updateBike();
     },
-  },
-  mounted() {
-    this.updateBike();
   }
 }
 </script>
