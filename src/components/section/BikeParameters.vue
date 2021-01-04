@@ -3,18 +3,20 @@
     <div class="box">
       <h2 class="title is-4">Bike Settings</h2>
 
-      <div class="tabs is-centered is-toggle is-fullwidth" v-if="bikes.length > 1">
-        <ul>
-          <li v-for="(bike, index) in bikes" :key="index" :class="{'is-active': index === activeBikeIndex}">
-            <a @click="changeBike(index)" :style="getTabStyle(index)">
-              <span>Bike #{{index + 1}}</span>
-              <span @click.stop="removeBike(index)" class="icon is-small remove-bike-btn"><i class="fas fa-times" aria-hidden="true"></i></span>
-            </a>
-          </li>
-        </ul>
-      </div>
+      <transition name="fade">
+        <div class="tabs is-centered is-toggle is-fullwidth" v-if="bikes.length > 1">
+          <ul>
+            <li v-for="(bike, index) in bikes" :key="index" :class="{'is-active': index === activeBikeIndex}">
+              <a @click="changeBike(index)" :style="getTabStyle(index)">
+                <span>Bike #{{index + 1}}</span>
+                <span @click.stop="removeBike(index)" class="icon is-small remove-bike-btn"><i class="fas fa-times" aria-hidden="true"></i></span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </transition>
 
-      <component :is="calculationType.form" v-for="(bike, index) in bikes" :bike="bike" :active="index === activeBikeIndex" :key="index" @bikeChanged="updateBike"></component>
+        <component :is="calculationType.form" v-for="(bike, index) in bikes" :bike="bike" :active="index === activeBikeIndex" :key="index" @bikeChanged="updateBike"></component>
 
       <div class="container has-text-centered">
         <button @click="calculate" class="button is-primary is-medium is-rounded">
@@ -93,13 +95,22 @@ export default {
 .tabs {
   li.is-active a {
     opacity: 100%;
-    border-color: black;
     font-weight: bold;
   }
 
   li a {
     opacity: 50%;
     color: white;
+    border: none;
+    transition: opacity .5s ease;
   }
+}
+
+/* Transitions */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>

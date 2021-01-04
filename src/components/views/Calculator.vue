@@ -1,8 +1,10 @@
 <template>
-  <div>
-    <BikeParameters @calculate="calculate"></BikeParameters>
-    <component :is="calculationType.results" :bikeParameters="bikeParameters"></component>
-  </div>
+    <div>
+      <BikeParameters @calculate="calculate"></BikeParameters>
+      <transition name="fade">
+        <component :is="calculationType.results" :bikeParameters="bikeParameters"></component>
+      </transition>
+    </div>
 </template>
 
 <script>
@@ -28,6 +30,11 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
 </style>
