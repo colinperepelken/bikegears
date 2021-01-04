@@ -63,14 +63,7 @@ export default {
   mixins: [CalculationForm],
   data() {
     return {
-      bikeData: {
-        chainrings: [
-          {value: 32},
-          {value: 44}
-        ],
-        cassetteMin: 11,
-        cassetteMax: 42,
-      },
+      bikeData: {},
       maxNumChainrings: 3
     }
   },
