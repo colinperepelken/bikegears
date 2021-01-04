@@ -1,5 +1,5 @@
 <template>
-  <article :class="'message ' + color">
+  <article :class="'message ' + messageType">
     <div v-if="this.$slots.header" class="message-header">
       <p>
         <slot name="header"></slot>
@@ -20,7 +20,7 @@ export default {
       type: Boolean,
       default: false
     },
-    color: {
+    messageType: {
       type: String,
       default: "is-info"
     }
