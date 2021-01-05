@@ -1,6 +1,6 @@
 <template>
   <article :class="'message ' + messageType">
-    <div v-if="this.$slots.header" class="message-header">
+    <div v-if="this.$slots.header" class="message-header" :style="headerStyle">
       <p>
         <slot name="header"></slot>
       </p>
@@ -23,6 +23,20 @@ export default {
     messageType: {
       type: String,
       default: "is-info"
+    },
+    color: {
+      type: String,
+      default: null
+    }
+  },
+  computed: {
+    headerStyle() {
+      if (this.color !== null) {
+        return {
+          'background-color': this.color
+        };
+      }
+      return {};
     }
   }
 }

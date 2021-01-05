@@ -1,6 +1,6 @@
 <template>
   <div class="insights">
-    <Message>
+    <Message :color="currentBike.color" :message-type="''">
       <template slot="header">
         <span class="icon">
           <i class="fas fa-info-circle"></i>
