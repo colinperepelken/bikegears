@@ -81,4 +81,33 @@ export default {
 .title {
   text-transform: uppercase;
 }
+
+section.hero.is-info {
+  background-image:
+      linear-gradient(to bottom, rgba(0, 0, 0, .3), rgba(0, 0, 0, 0.75)),
+      url('../../assets/hero.jpg');
+  background-size: cover;
+  background-position-y: bottom;
+
+  .navbar-brand {
+    .navbar-item {
+      background-color: transparent;
+    }
+  }
+
+  .navbar-menu {
+    a.navbar-item {
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      transition: background-color .3s ease;
+
+      &.is-active {
+        background-color: rgba(20, 20, 20, .7);
+      }
+    }
+    a.navbar-item:not(.is-active) {
+      background-color: transparent;
+    }
+  }
+}
 </style>

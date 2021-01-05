@@ -8,7 +8,6 @@
         <span>Insights (Bike #{{this.activeBikeIndex+1}})</span>
       </template>
 
-
       <p class="mb-2" v-html="message"></p>
 
       <p><i>To learn more about gear ratios, visit the <router-link to="/learn">Learn</router-link> section of this site.</i></p>
