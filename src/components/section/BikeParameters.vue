@@ -122,7 +122,7 @@ export default {
   .button {
     left: 0;
     width: 11rem;
-    border-radius: 0 5px 5px 0;
+    border-radius: 0 15px 15px 0;
     transition: opacity .5s ease, width .2s ease;
 
     &:not(:first-child) {
