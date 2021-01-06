@@ -123,8 +123,7 @@ export default {
     left: 0;
     width: 11rem;
     border-radius: 0 5px 5px 0;
-    transition: opacity .5s ease;
-    transition: width .2s ease;
+    transition: opacity .5s ease, width .2s ease;
 
     &:not(:first-child) {
       margin-top: .3rem;
