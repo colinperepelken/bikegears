@@ -1,50 +1,55 @@
 <template>
-  <div class="container has-text-left">
-    <div class="box">
-      <h2 class="title is-4">Bike Settings</h2>
+  <div>
+    <transition name="fade">
+      <div class="tabs is-centered is-toggle is-fullwidth" v-if="bikes.length > 1">
+        <ul>
+          <li v-for="(bike, index) in bikes" :key="index" :class="{'is-active': index === activeBikeIndex}">
+            <a @click="changeBike(index)" :style="getTabStyle(index)">
+              <span>Bike #{{index + 1}}</span>
+              <span @click.stop="removeBike(index)" class="icon is-small remove-bike-btn"><i class="fas fa-times" aria-hidden="true"></i></span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </transition>
 
-      <transition name="fade">
-        <div class="tabs is-centered is-toggle is-fullwidth" v-if="bikes.length > 1">
-          <ul>
-            <li v-for="(bike, index) in bikes" :key="index" :class="{'is-active': index === activeBikeIndex}">
-              <a @click="changeBike(index)" :style="getTabStyle(index)">
-                <span>Bike #{{index + 1}}</span>
-                <span @click.stop="removeBike(index)" class="icon is-small remove-bike-btn"><i class="fas fa-times" aria-hidden="true"></i></span>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </transition>
+    <div class="container has-text-left">
+      <div class="box">
+        <h2 class="title is-4">Bike Settings</h2>
+
+
 
         <component :is="calculationType.form" v-for="(bike, index) in bikes" :bike="bike" :active="index === activeBikeIndex" :key="index" @bikeChanged="updateBike"></component>
 
-      <div class="container has-text-centered">
-        <button @click="calculate" class="button is-primary is-medium is-rounded">
+        <div class="container has-text-centered">
+          <button @click="calculate" class="button is-primary is-medium is-rounded">
           <span class="icon is-medium">
             <i class="fas fa-bicycle"></i>
           </span>
-          <span>Calculate</span>
-        </button>
-        <button :disabled="this.bikes.length >= this.maxBikes" @click="addBike" class="button is-info is-medium is-rounded ml-5">
+            <span>Calculate</span>
+          </button>
+          <button :disabled="this.bikes.length >= this.maxBikes" @click="addBike" class="button is-info is-medium is-rounded ml-5">
           <span class="icon is-medium">
             <i class="fas fa-plus"></i>
           </span>
-          <span>Compare</span>
-        </button>
-      </div>
+            <span>Compare</span>
+          </button>
+        </div>
 
+      </div>
     </div>
   </div>
+
+
 </template>
 
 <script>
-import _ from 'lodash';
 import {mapMutations, mapState} from 'vuex';
 
 export default {
   name: "BikeParameters",
   computed: {
-    ...mapState(['activeBikeIndex', 'calculationType', 'availableBikeColors', 'bikes'])
+    ...mapState(['activeBikeIndex', 'calculationType', 'availableBikeColors', 'bikes', 'bikesChanged'])
   },
   data() {
     return {
@@ -55,13 +60,7 @@ export default {
     ...mapMutations(['removeBike', 'addBike', 'updateBike', 'changeBike', 'setBikeColor']),
     calculate() {
       this.$emit('calculate', {
-        bikes: this.bikes.map(bike => {
-          return {
-            chainrings: bike.chainrings.map(chainring => chainring.value).sort(),
-            cassetteCogs: _.range(bike.cassetteMin, bike.cassetteMax, 1),
-            color: bike.color
-          };
-        })
+        bikes: this.bikes
       });
     },
     getTabStyle(index) {
