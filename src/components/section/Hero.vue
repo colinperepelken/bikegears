@@ -29,7 +29,7 @@
 
     <div class="hero-body">
       <div class="container has-text-centered">
-        <div class="select is-large is-rounded is-primary">
+        <div class="select is-large is-rounded is-info">
           <select v-model="currentType" @change="calculationChanged">
             <option :key="option.value" v-for="option in calculationOptions" :value="option.value">{{option.text}}</option>
             <option disabled>More coming soon...</option>
