@@ -5,7 +5,7 @@
         <span class="icon">
           <i class="fas fa-info-circle"></i>
         </span>
-        <span>Insights (Bike #{{this.activeBikeIndex+1}})</span>
+        <span>Insights (Bike {{this.activeBikeIndex+1}})</span>
       </template>
 
       <p class="mb-2" v-html="message"></p>
