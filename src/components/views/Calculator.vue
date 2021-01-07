@@ -1,5 +1,8 @@
 <template>
     <div>
+
+      <BikeButtons></BikeButtons>
+
       <BikeParameters @calculate="calculate"></BikeParameters>
       <div class="results-container">
         <transition name="fade">
@@ -23,10 +26,11 @@ import BikeParameters from "@/components/section/BikeParameters";
 import {mapState} from "vuex";
 import Message from "@/components/Message";
 import _ from "lodash";
+import BikeButtons from "@/components/BikeButtons";
 
 export default {
   name: "Calculator",
-  components: {Message, BikeParameters},
+  components: {BikeButtons, Message, BikeParameters},
   computed: {
       ...mapState(['calculationType', 'bikesChanged', 'bikes'])
   },
@@ -74,6 +78,4 @@ export default {
     right: 0;
   }
 }
-
-
 </style>
