@@ -1,15 +1,21 @@
 <template>
-  <transition name="fade">
-    <div v-if="bikes.length > 1" class="has-text-left" id="bike-buttons">
-      <button @click="changeBike(index)" :style="getBikeButtonStyle(index)" :class="getBikeButtonClass(index)"
-              :key="index" v-for="(bike, index) in bikes">
-        <span v-if="index === activeBikeIndex" class="icon selected-icon"><i class="fas fa-angle-right"></i></span>
-        <span>Bike {{ index + 1 }}</span>
-        <span @click.stop="removeBike(index)" class="icon is-small remove-bike-btn"><i class="fas fa-times"
-                                                                                       aria-hidden="true"></i></span>
-      </button>
-    </div>
-  </transition>
+  <aside class="menu">
+    <p class="menu-label">
+      Compare Bikes
+    </p>
+    <ul class="menu-list">
+      <li :key="index" v-for="(bike, index) in bikes">
+        <a :class="{'is-active': index === activeBikeIndex}" @click="changeBike(index)">
+          <span class="icon-text">
+            <span class="icon mr-2" :style="getBikeButtonStyle(index)"><i class="fas fa-circle"></i></span>
+            <span>Bike {{ index + 1 }}</span>
+            <span @click.stop="removeBike(index)" class="icon remove-bike-btn"><i class="fas fa-times"
+                                                                                  aria-hidden="true"></i></span>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </aside>
 </template>
 
 <script>
@@ -24,16 +30,10 @@ export default {
     ...mapMutations(['removeBike', 'addBike', 'updateBike', 'changeBike', 'setBikeColor']),
     getBikeButtonStyle(index) {
       return {
-        backgroundColor: this.bikes[index].color,
-        opacity: (index === this.activeBikeIndex) ? 1 : .5,
+        color: this.bikes[index].color,
+        // opacity: (index === this.activeBikeIndex) ? 1 : .5,
       }
     },
-    getBikeButtonClass(index) {
-      return {
-        button: true, 'has-text-white': true, 'is-large': true,
-        'is-active': index === this.activeBikeIndex
-      };
-    }
   }
 }
 </script>
@@ -41,52 +41,32 @@ export default {
 <style scoped lang="scss">
 #bike-buttons {
   width: 15rem;
-  z-index: 2;
-  border: none;
-  box-shadow: none;
-  background: transparent;
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 1rem;
+  left: 1rem;
   display: block;
   margin-top: 1rem;
+  z-index: 2;
+  border-right: 1px solid #ededed;
+  padding-right: 1rem;
 
-  .button {
-    left: 0;
-    width: 11rem;
-    border-radius: 0 10px 10px 0;
-    transition: opacity .5s ease, width .2s ease;
-
-    &:not(:first-child) {
-      margin-top: .3rem;
-    }
-
-    &.is-active {
-      border: none;
-      width: 12rem;
-    }
-
-    & > .selected-icon {
-      font-size: 2rem;
-    }
-
-    & > span:not(.icon) {
-      padding-right: 1.2rem;
-    }
-
-    & > span.remove-bike-btn {
-      font-size: .9rem;
-    }
-
+  .icon-text > span {
+    vertical-align: middle; /* In a future version of Bulma .icon-text will be implemented and this could be removed */
   }
-}
 
-/* Transitions */
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
-}
+  .remove-bike-btn {
+    float: right;
+    visibility: hidden;
+  }
 
-.fade-enter, .fade-leave-to {
-  opacity: 0;
+  a.is-active {
+    background-color: rgba(0, 0, 0, .7);
+    transition: background-color .4s linear;
+
+    .remove-bike-btn {
+      visibility: visible;
+    }
+  }
 }
 </style>
