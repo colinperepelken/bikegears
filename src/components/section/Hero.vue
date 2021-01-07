@@ -6,7 +6,7 @@
         <div class="container">
           <div class="navbar-brand">
             <a href="/" class="navbar-item">
-              <h1 class="title is-4">Bike Gearing Calculator</h1>
+              <h1 class="title is-4">Bike Gears</h1>
             </a>
           </div>
           <div id="navbarMenuHeroC" class="navbar-menu">

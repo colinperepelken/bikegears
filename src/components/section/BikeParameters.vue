@@ -6,7 +6,7 @@
       <component :is="calculationType.form" v-for="(bike, index) in bikes" :bike="bike"
                  :active="index === activeBikeIndex" :key="index" @bikeChanged="updateBike"></component>
 
-      <div class="container has-text-centered">
+      <div class="container has-text-centered" id="buttons-container">
         <button @click="calculate" class="button is-primary is-medium is-rounded">
         <span class="icon is-medium">
           <i class="fas fa-bicycle"></i>
@@ -14,7 +14,7 @@
           <span>Calculate</span>
         </button>
         <button :disabled="this.bikes.length >= this.maxBikes" @click="addBike"
-                class="button is-info is-medium is-rounded ml-5">
+                class="button is-info is-medium is-rounded">
         <span class="icon is-medium">
           <i class="fas fa-plus"></i>
         </span>
@@ -60,13 +60,19 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '~bulma/sass/utilities/all';
+
 .container {
   margin-top: 1rem;
 }
 
-.remove-bike-btn {
-  position: absolute;
-  right: .8rem;
+#buttons-container {
+  button:nth-child(2) {
+    margin-top: .8rem;
+    @include tablet {
+      margin: 0 0 0 1.5rem;
+    }
+  }
 }
 
 </style>
