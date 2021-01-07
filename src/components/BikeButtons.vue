@@ -1,21 +1,24 @@
 <template>
-  <aside class="menu">
-    <p class="menu-label">
-      Compare Bikes
-    </p>
-    <ul class="menu-list">
-      <li :key="index" v-for="(bike, index) in bikes">
-        <a :class="{'is-active': index === activeBikeIndex}" @click="changeBike(index)">
+  <transition name="fade">
+    <aside class="menu">
+      <p class="menu-label">
+        Compare Bikes
+      </p>
+      <ul class="menu-list">
+        <li :key="index" v-for="(bike, index) in bikes">
+          <a :class="{'is-active': index === activeBikeIndex}" @click="changeBike(index)">
           <span class="icon-text">
             <span class="icon mr-2" :style="getBikeButtonStyle(index)"><i class="fas fa-circle"></i></span>
             <span>Bike {{ index + 1 }}</span>
             <span @click.stop="removeBike(index)" class="icon remove-bike-btn"><i class="fas fa-times"
                                                                                   aria-hidden="true"></i></span>
           </span>
-        </a>
-      </li>
-    </ul>
-  </aside>
+          </a>
+        </li>
+      </ul>
+    </aside>
+  </transition>
+
 </template>
 
 <script>
@@ -68,5 +71,12 @@ export default {
       visibility: visible;
     }
   }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .4s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
 }
 </style>
