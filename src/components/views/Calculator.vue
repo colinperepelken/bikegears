@@ -1,22 +1,24 @@
 <template>
     <div>
 
-      <BikeButtons></BikeButtons>
+      <BikeButtons id="bike-buttons" v-if="bikes.length > 1"></BikeButtons>
 
-      <BikeParameters @calculate="calculate"></BikeParameters>
-      <div class="results-container">
-        <transition name="fade">
-          <component :style="{opacity: bikesChanged ? 0.5 : 1, transition: 'opacity .3s linear'}" :is="calculationType.results" :bikeParameters="bikeParameters"></component>
-        </transition>
+      <div>
+        <BikeParameters @calculate="calculate"></BikeParameters>
+        <div class="results-container">
+          <transition name="fade">
+            <component :style="{opacity: bikesChanged ? 0.5 : 1, transition: 'opacity .3s linear'}" :is="calculationType.results" :bikeParameters="bikeParameters"></component>
+          </transition>
 
-        <transition name="fade">
-          <Message id="bike-changed-message" v-if="bikesChanged" message-type="is-warning">
+          <transition name="fade">
+            <Message id="bike-changed-message" v-if="bikesChanged" message-type="is-warning">
            <span class="icon mr-4">
               <i class="fas fa-exclamation-triangle"></i>
             </span>
-            Bike settings changed, click <a @click="calculate({bikes: bikes})">Calculate</a>
-          </Message>
-        </transition>
+              Bike settings changed, click <a @click="calculate({bikes: bikes})">Calculate</a>
+            </Message>
+          </transition>
+        </div>
       </div>
     </div>
 </template>
@@ -72,10 +74,18 @@ export default {
   #bike-changed-message {
     position: absolute;
     top: 8rem;
-    //transform: translateX(-50%);
     font-size: 1.4rem;
     left: 0;
     right: 0;
+    width: 48rem;
+    margin-left: auto;
+    margin-right: auto;
   }
 }
+
+#bike-buttons {
+  display: inline-block;
+  float: left;
+}
+
 </style>

@@ -3,6 +3,7 @@
     <div v-if="bikes.length > 1" class="has-text-left" id="bike-buttons">
       <button @click="changeBike(index)" :style="getBikeButtonStyle(index)" :class="getBikeButtonClass(index)"
               :key="index" v-for="(bike, index) in bikes">
+        <span v-if="index === activeBikeIndex" class="icon selected-icon"><i class="fas fa-angle-right"></i></span>
         <span>Bike {{ index + 1 }}</span>
         <span @click.stop="removeBike(index)" class="icon is-small remove-bike-btn"><i class="fas fa-times"
                                                                                        aria-hidden="true"></i></span>
@@ -39,19 +40,21 @@ export default {
 
 <style scoped lang="scss">
 #bike-buttons {
-  position: fixed;
-  left: 0;
   width: 15rem;
   z-index: 2;
   border: none;
   box-shadow: none;
   background: transparent;
-
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 1rem;
+  display: block;
+  margin-top: 1rem;
 
   .button {
     left: 0;
     width: 11rem;
-    border-radius: 0 15px 15px 0;
+    border-radius: 0 10px 10px 0;
     transition: opacity .5s ease, width .2s ease;
 
     &:not(:first-child) {
@@ -63,12 +66,16 @@ export default {
       width: 12rem;
     }
 
+    & > .selected-icon {
+      font-size: 2rem;
+    }
+
     & > span:not(.icon) {
       padding-right: 1.2rem;
     }
 
-    & > span.icon {
-      font-size: 1rem;
+    & > span.remove-bike-btn {
+      font-size: .9rem;
     }
 
   }
