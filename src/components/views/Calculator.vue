@@ -61,6 +61,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '~bulma/sass/utilities/all';
+
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
 }
@@ -77,9 +79,17 @@ export default {
     font-size: 1.4rem;
     left: 0;
     right: 0;
-    width: 48rem;
+    width: 18rem;
     margin-left: auto;
     margin-right: auto;
+
+    @include tablet {
+      width: 45rem;
+    }
+
+    @include desktop {
+      width: 48rem;
+    }
   }
 }
 

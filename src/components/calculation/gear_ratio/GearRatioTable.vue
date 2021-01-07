@@ -1,7 +1,7 @@
 <template>
   <div class="box">
-    <h2 class="title is-4">Table Data</h2>
-    <div :class="{columns: true, 'is-centered': bikes.length === 1}">
+    <h2 class="title is-4">Table Data <span v-if="bikes.length > 1" class="subtitle">(Scroll right to see all bikes <span class="icon"><i class="fas fa-arrow-right"></i></span>)</span></h2>
+    <div :class="{columns: true, 'is-centered': bikes.length === 1, 'is-mobile': true}">
       <div class="column is-full-mobile is-half-tablet" :style="{'border-color': bike.color}" v-for="(bike, index) in bikes" :key="index">
         <div class="table-container">
           <h3 class="title is-5" :style="{color: bike.color}">Bike {{index+1}}</h3>
@@ -42,6 +42,18 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.title {
+  .subtitle {
+    display: inline-flex;
+    font-family: 'Montserrat', serif;
+    font-size: 1rem;
+
+    & > .icon {
+      margin-left: .2rem;
+    }
+  }
+}
+
 table {
   width: 100%;
 
