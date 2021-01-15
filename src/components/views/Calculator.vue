@@ -1,9 +1,11 @@
 <template>
-    <div>
+    <div class="columns">
 
-      <BikeButtons id="bike-buttons" v-if="bikes.length > 1"></BikeButtons>
+      <div class="column bikes-column" v-if="bikes.length > 1">
+        <BikeButtons></BikeButtons>
+      </div>
 
-      <div>
+      <div class="column main-column">
         <BikeParameters @calculate="calculate"></BikeParameters>
         <div class="results-container">
           <transition name="fade">
@@ -93,9 +95,8 @@ export default {
   }
 }
 
-#bike-buttons {
-  display: inline-block;
-  float: left;
+.bikes-column {
+  max-width: fit-content;
 }
 
 </style>

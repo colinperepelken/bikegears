@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <aside class="menu">
+    <aside id="bike-buttons" class="menu column">
       <p class="menu-label">
         Compare Bikes
       </p>
@@ -22,37 +22,28 @@
 </template>
 
 <script>
-import {mapMutations, mapState} from "vuex";
+import BikeButtonHelper from "@/mixins/BikeButtonHelper";
 
 export default {
   name: "BikeButtons",
-  computed: {
-    ...mapState(['bikes', 'activeBikeIndex'])
-  },
-  methods: {
-    ...mapMutations(['removeBike', 'addBike', 'updateBike', 'changeBike', 'setBikeColor']),
-    getBikeButtonStyle(index) {
-      return {
-        color: this.bikes[index].color,
-        // opacity: (index === this.activeBikeIndex) ? 1 : .5,
-      }
-    },
-  }
+  mixins: [BikeButtonHelper],
 }
 </script>
 
 <style scoped lang="scss">
+@import '~bulma/sass/utilities/all';
+
 #bike-buttons {
   width: 15rem;
   position: -webkit-sticky; /* Safari */
   position: sticky;
   top: 1rem;
-  left: 1rem;
-  display: block;
   margin-top: 1rem;
-  z-index: 2;
-  border-right: 1px solid #ededed;
-  padding-right: 1rem;
+  display: none;
+
+  @include desktop {
+    display: block;
+  }
 
   .icon-text > span {
     vertical-align: middle; /* In a future version of Bulma .icon-text will be implemented and this could be removed */

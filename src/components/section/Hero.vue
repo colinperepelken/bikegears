@@ -8,24 +8,42 @@
             <a href="/" class="navbar-item">
               <h1 class="title is-4">Bike Gears</h1>
             </a>
+
+            <!-- Burger menu only shown on touch devices -->
+            <a role="button" :class="{'navbar-burger': true, 'is-active': showMobileMenu}" aria-label="menu"
+               aria-expanded="false" @click="showMobileMenu = ! showMobileMenu">
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </a>
           </div>
-          <div id="navbarMenuHeroC" class="navbar-menu">
+
+          <div :class="{'navbar-menu': true, 'is-active': showMobileMenu}">
+
             <div class="navbar-end">
               <router-link to="/" :class="{'navbar-item': true, 'is-active': isActivePath('/')}">Calculator
               </router-link>
               <router-link to="/learn" :class="{'navbar-item': true, 'is-active': isActivePath('/learn')}">Learn
               </router-link>
-              <span class="navbar-item">
-<!--              <a class="button is-success is-inverted">-->
-                <!--                <span class="icon">-->
-                <!--                  <i class="fas fa-coffee"></i>-->
-                <!--                </span>-->
-                <!--                <span>Donate</span>-->
-                <!--              </a>-->
-            </span>
+
+              <div class="navbar-item has-dropdown is-invisible-desktop" id="nav-bike-menu" v-if="bikes.length > 1">
+
+                <a class="navbar-link">
+                  Compare bikes
+                </a>
+
+                <div class="navbar-dropdown">
+                  <a :key="index" v-for="(bike, index) in bikes" :class="{'navbar-item': true, 'is-active': index === activeBikeIndex}" @click="changeBike(index)">
+                    <span class="icon mr-2" :style="getBikeButtonStyle(index)"><i class="fas fa-circle"></i></span>
+                    <span>Bike {{ index + 1 }}</span>
+                  </a>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>
+
       </nav>
     </div>
 
@@ -47,9 +65,11 @@
 <script>
 import {CALCULATION_TYPES} from "@/constants";
 import {mapMutations} from 'vuex';
+import BikeButtonHelper from "@/mixins/BikeButtonHelper";
 
 export default {
   name: "Hero",
+  mixins: [BikeButtonHelper],
   computed: {
     calculationOptions() {
       return CALCULATION_TYPES.map(type => {
@@ -63,7 +83,8 @@ export default {
   },
   data() {
     return {
-      currentType: CALCULATION_TYPES[0].id
+      showMobileMenu: false,
+      currentType: CALCULATION_TYPES[0].id,
     }
   },
   mounted() {
@@ -82,6 +103,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+//@import '~bulma/sass/utilities/all';
+
 .title {
   text-transform: uppercase;
 }
@@ -96,21 +119,51 @@ section.hero.is-info {
     .navbar-item {
       background-color: transparent;
     }
+
+    .navbar-burger {
+      color: white;
+    }
   }
 
   .navbar-menu {
-    a.navbar-item {
+    a.navbar-item.is-active {
+      background-color: rgba(20, 20, 20, .7);
       border-bottom-left-radius: 10px;
       border-bottom-right-radius: 10px;
       transition: background-color .3s ease;
-
-      &.is-active {
-        background-color: rgba(20, 20, 20, .7);
-      }
     }
 
     a.navbar-item:not(.is-active) {
       background-color: transparent;
+    }
+
+    &.is-active {
+      position: absolute;
+      width: 100%;
+      text-align: left;
+      background-color: rgba(20, 20, 20, .93);
+      background-image: unset;
+    }
+
+    .has-dropdown > .navbar-link:first-child {
+      text-transform: uppercase;
+      font-weight: bold;
+      font-size: .8rem;
+      border-top: 1px solid grey;
+    }
+
+    #nav-bike-menu {
+      margin-top: 1rem;
+
+      .navbar-item {
+        border-radius: unset;
+        background-color: unset;
+      }
+
+      .navbar-item.is-active {
+        font-weight: bold;
+        text-decoration: underline;
+      }
     }
   }
 }
