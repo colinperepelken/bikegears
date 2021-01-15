@@ -14,13 +14,31 @@ export const CALCULATION_TYPES = [
         name: 'Gear ratios',
         form: GearRatioForm,
         results: GearRatioResults,
-        learn: LearnGearRatio
+        learn: LearnGearRatio,
+        enabled: true
     },
     {
         id: 'gear_inch',
         name: 'Gear inches',
         form: GearInchForm,
         results: GearInchResults,
-        learn: LearnGearInch
+        learn: LearnGearInch,
+        enabled: true
     },
+    {
+        id: 'gear_meters',
+        name: 'Meters of development',
+        form: null,
+        results: null,
+        learn: null,
+        enabled: false
+    },
+    {
+        id: 'speed',
+        name: 'Speed',
+        form: null,
+        results: null,
+        learn: null,
+        enabled: false
+    }
 ];

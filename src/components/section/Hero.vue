@@ -11,15 +11,17 @@
           </div>
           <div id="navbarMenuHeroC" class="navbar-menu">
             <div class="navbar-end">
-              <router-link to="/" :class="{'navbar-item': true, 'is-active': isActivePath('/')}">Calculator</router-link>
-              <router-link to="/learn" :class="{'navbar-item': true, 'is-active': isActivePath('/learn')}">Learn</router-link>
+              <router-link to="/" :class="{'navbar-item': true, 'is-active': isActivePath('/')}">Calculator
+              </router-link>
+              <router-link to="/learn" :class="{'navbar-item': true, 'is-active': isActivePath('/learn')}">Learn
+              </router-link>
               <span class="navbar-item">
 <!--              <a class="button is-success is-inverted">-->
-<!--                <span class="icon">-->
-<!--                  <i class="fas fa-coffee"></i>-->
-<!--                </span>-->
-<!--                <span>Donate</span>-->
-<!--              </a>-->
+                <!--                <span class="icon">-->
+                <!--                  <i class="fas fa-coffee"></i>-->
+                <!--                </span>-->
+                <!--                <span>Donate</span>-->
+                <!--              </a>-->
             </span>
             </div>
           </div>
@@ -31,8 +33,9 @@
       <div class="container has-text-centered">
         <div class="select is-large is-rounded is-info">
           <select v-model="currentType" @change="calculationChanged">
-            <option :key="option.value" v-for="option in calculationOptions" :value="option.value">{{option.text}}</option>
-            <option disabled>More coming soon...</option>
+            <option :disabled="option.disabled" :key="option.value" v-for="option in calculationOptions"
+                    :value="option.value">{{ option.text }}
+            </option>
           </select>
         </div>
       </div>
@@ -52,7 +55,8 @@ export default {
       return CALCULATION_TYPES.map(type => {
         return {
           value: type.id,
-          text: type.name
+          text: type.name,
+          disabled: !type.enabled
         }
       });
     }
@@ -83,9 +87,8 @@ export default {
 }
 
 section.hero.is-info {
-  background-image:
-      linear-gradient(to bottom, rgba(0, 0, 0, .3), rgba(0, 0, 0, 0.75)),
-      url('../../assets/hero.jpg');
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, .3), rgba(0, 0, 0, 0.75)),
+  url('../../assets/hero.jpg');
   background-size: cover;
   background-position-y: bottom;
 
@@ -105,6 +108,7 @@ section.hero.is-info {
         background-color: rgba(20, 20, 20, .7);
       }
     }
+
     a.navbar-item:not(.is-active) {
       background-color: transparent;
     }
