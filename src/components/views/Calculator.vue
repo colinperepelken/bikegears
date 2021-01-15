@@ -42,7 +42,7 @@ export default {
         bikes: data.bikes.map(bike => {
           return {
             chainrings: bike.chainrings.map(chainring => chainring.value).sort(),
-            cassetteCogs: _.range(bike.cassetteMin, bike.cassetteMax, 1),
+            cassetteCogs: _.range(bike.cassetteMin, bike.cassetteMax + 1, 1),
             color: bike.color
           };
         })
