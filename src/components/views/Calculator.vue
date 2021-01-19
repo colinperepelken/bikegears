@@ -97,6 +97,11 @@ export default {
 
 .bikes-column {
   max-width: fit-content;
+  display: none;
+
+  @include desktop {
+    display: block;
+  }
 }
 
 </style>

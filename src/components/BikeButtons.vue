@@ -39,11 +39,7 @@ export default {
   position: sticky;
   top: 1rem;
   margin-top: 1rem;
-  display: none;
-
-  @include desktop {
-    display: block;
-  }
+  display: block;
 
   .icon-text > span {
     vertical-align: middle; /* In a future version of Bulma .icon-text will be implemented and this could be removed */
