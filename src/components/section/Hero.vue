@@ -25,25 +25,10 @@
               </router-link>
               <router-link to="/learn" :class="{'navbar-item': true, 'is-active': isActivePath('/learn')}">Learn
               </router-link>
-
-              <div class="navbar-item has-dropdown is-invisible-desktop" id="nav-bike-menu" v-if="bikes.length > 1">
-
-                <a class="navbar-link">
-                  Compare bikes
-                </a>
-
-                <div class="navbar-dropdown">
-                  <a :key="index" v-for="(bike, index) in bikes" :class="{'navbar-item': true, 'is-active': index === activeBikeIndex}" @click="changeBike(index)">
-                    <span class="icon mr-2" :style="getBikeButtonStyle(index)"><i class="fas fa-circle"></i></span>
-                    <span>Bike {{ index + 1 }}</span>
-                  </a>
-                </div>
-              </div>
-
             </div>
+
           </div>
         </div>
-
       </nav>
     </div>
 
@@ -83,8 +68,8 @@ export default {
   },
   data() {
     return {
-      showMobileMenu: false,
       currentType: CALCULATION_TYPES[0].id,
+      showMobileMenu: false
     }
   },
   mounted() {
@@ -103,7 +88,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-//@import '~bulma/sass/utilities/all';
+@import '~bulma/sass/utilities/all';
 
 .title {
   text-transform: uppercase;
@@ -143,27 +128,6 @@ section.hero.is-info {
       text-align: left;
       background-color: rgba(20, 20, 20, .93);
       background-image: unset;
-    }
-
-    .has-dropdown > .navbar-link:first-child {
-      text-transform: uppercase;
-      font-weight: bold;
-      font-size: .8rem;
-      border-top: 1px solid grey;
-    }
-
-    #nav-bike-menu {
-      margin-top: 1rem;
-
-      .navbar-item {
-        border-radius: unset;
-        background-color: unset;
-      }
-
-      .navbar-item.is-active {
-        font-weight: bold;
-        text-decoration: underline;
-      }
     }
   }
 }

@@ -1,11 +1,9 @@
 <template>
-    <div class="columns">
+    <div>
 
-      <div class="column bikes-column" v-if="bikes.length > 1">
-        <BikeButtons></BikeButtons>
-      </div>
+      <BikeButtons v-if="bikes.length > 1"></BikeButtons>
 
-      <div class="column main-column">
+      <div>
         <BikeParameters @calculate="calculate"></BikeParameters>
         <div class="results-container">
           <transition name="fade">
