@@ -8,7 +8,11 @@
         <span>Insights (Bike {{this.activeBikeIndex+1}})</span>
       </template>
 
-      <p class="mb-2" v-html="message"></p>
+      <p class="mb-2">
+        Your minimum gear ratio is <b>{{minRatio}}</b>.
+        Your highest gear ratio is <b>{{maxRatio}}</b>.
+        Your gear range is <b>{{gearRange}}</b>%
+      </p>
 
       <p><i>To learn more about gear ratios, visit the <router-link to="/learn">Learn</router-link> section of this site.</i></p>
     </Message>
@@ -36,20 +40,9 @@ export default {
 
       return (largestChainring / this.currentBike.cassetteMin).toFixed(2);
     },
-    message() {
-
-      let message = "";
-
-      if (this.minRatio < 1) {
-        message += `Your minimum gear ratio is <b>${this.minRatio}</b> which will enable you to climb very steep hills. `;
-      } else {
-        message += `Your minimum gear ratio is <b>${this.minRatio}</b>. `;
-      }
-
-      message += `Your highest (hardest) gear ratio is <b>${this.maxRatio}</b>. `
-
-      return message;
-    }
+    gearRange() {
+      return Math.round((this.maxRatio / this.minRatio) * 100);
+    },
   },
   methods: {
     computeGearRatio(chainring, cog) {

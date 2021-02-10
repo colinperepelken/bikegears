@@ -1,4 +1,4 @@
 
 export default {
-    props: ['bikeParameters']
+    props: ['bikeParameters'],
 }

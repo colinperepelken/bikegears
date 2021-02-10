@@ -19,7 +19,7 @@ import GearRatioInsights from "@/components/calculation/gear_ratio/GearRatioInsi
 export default {
   name: "GearRatioResults",
   components: {GearRatioInsights, GearRatioTable, GearRatioChart},
-  mixins: [CalculationResults]
+  mixins: [CalculationResults],
 }
 </script>
 

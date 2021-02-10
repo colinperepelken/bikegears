@@ -45,7 +45,7 @@ export const store = new Vuex.Store({
             state.bikesChanged = true;
         },
         updateBike(state, bike) {
-            state.bikes[state.activeBikeIndex] = {...state.bikes[state.activeBikeIndex], ...bike};
+            Vue.set(state.bikes, state.activeBikeIndex, {...state.bikes[state.activeBikeIndex], ...bike});
             state.bikesChanged = true;
         },
         changeBike(state, index) {
@@ -56,6 +56,11 @@ export const store = new Vuex.Store({
         },
         calculate(state) {
             state.bikesChanged = false;
+        }
+    },
+    getters: {
+        currentBike: state => {
+            return state.bikes[state.activeBikeIndex];
         }
     }
 });

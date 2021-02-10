@@ -1,16 +1,10 @@
 import Message from "@/components/Message";
-import {mapState} from "vuex";
+import {mapGetters, mapState} from "vuex";
 
 export default {
     components: {Message},
     computed: {
-        ...mapState(['bikes', 'activeBikeIndex', 'bikesChanged']),
-        currentBike() {
-            return this.bikes[this.activeBikeIndex];
-        },
-        message() {
-            // Build your insight message here
-            return "";
-        }
+        ...mapState(['activeBikeIndex', 'bikesChanged', 'bikes']),
+        ...mapGetters(['currentBike'])
     },
 }
