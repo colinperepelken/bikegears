@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import {BIKE_COLORS, CALCULATION_TYPES} from "@/constants";
+import {BIKE_COLORS, CALCULATION_TYPES, DEFAULT_BIKE_SETTINGS} from "@/constants";
+import _ from 'lodash';
 
 Vue.use(Vuex);
 
@@ -8,12 +9,7 @@ export const store = new Vuex.Store({
     state: {
         calculationType: CALCULATION_TYPES[0],
         bikes: [
-            // Default bike settings
-            {
-                chainrings: [32, 44],
-                cassetteMin: 11,
-                cassetteMax: 42,
-            }
+            DEFAULT_BIKE_SETTINGS
         ],
         activeBikeIndex: 0,
         availableBikeColors: BIKE_COLORS,
@@ -23,9 +19,7 @@ export const store = new Vuex.Store({
             state.calculationType = type;
         },
         addBike(state) {
-            state.bikes.push({
-                ...state.bikes.slice(-1)[0]
-            });
+            Vue.set(state.bikes, state.bikes.length, _.cloneDeep(state.bikes[state.activeBikeIndex]));
             state.activeBikeIndex = state.bikes.length - 1;
             state.bikes[state.activeBikeIndex].color = state.availableBikeColors.pop();
         },
@@ -39,7 +33,6 @@ export const store = new Vuex.Store({
             state.bikes.splice(index, 1);
         },
         updateBike(state, bike) {
-            console.log('Setting bike data to ' + bike.cassetteMax);
             Vue.set(state.bikes, state.activeBikeIndex, {...state.bikes[state.activeBikeIndex], ...bike});
         },
         changeBike(state, index) {
