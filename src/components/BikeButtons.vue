@@ -23,10 +23,6 @@
         </li>
       </ul>
     </div>
-    <button :disabled="this.bikes.length >= this.maxBikes" @click="addBike"
-            class="button is-info is-medium is-rounded">
-
-    </button>
   </transition>
 
 </template>
