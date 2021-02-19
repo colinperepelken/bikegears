@@ -10,33 +10,30 @@
 <script>
 import ScatterChart from "@/components/chart/ScatterChart";
 import _ from 'lodash';
+import {mapState} from "vuex";
 
 export default {
   name: "GearRatioChart",
   components: {ScatterChart},
-  props: {
-    bikeParameters: {
-      type: Object,
-    }
-  },
   computed: {
+    ...mapState(['bikes']),
     loaded() {
-      return ! _.isEmpty(this.bikeParameters);
+      return ! _.isEmpty(this.bikes);
     },
     chartdata() {
       if (this.loaded) {
         return {
-          datasets: this.bikeParameters.bikes.map(bike => {
+          datasets: this.bikes.map(bike => {
             return bike.chainrings.map(chainring => {
               return {
-                label: chainring + ' tooth chainring',
+                label: chainring.value + ' tooth chainring',
                 borderColor: bike.color,
                 pointBackgroundColor: bike.color,
                 // pointBorderColor: "#474647",
                 // hoverBackgroundColor: "#8ec63f",
-                data: bike.cassetteCogs.map(cog => {
+                data: _.range(bike.cassetteMin, bike.cassetteMax + 1, 1).map(cog => {
                   return {
-                    x: this.computeGearRatio(chainring, cog),
+                    x: this.computeGearRatio(chainring.value, cog),
                     y: cog
                   }
                 }),

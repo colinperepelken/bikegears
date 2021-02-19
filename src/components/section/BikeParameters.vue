@@ -6,13 +6,7 @@
       <component :is="calculationType.form" v-for="(bike, index) in bikes" :bike="bike"
                  :active="index === activeBikeIndex" :key="index" @bikeChanged="updateBike"></component>
 
-      <div class="container has-text-centered" id="buttons-container">
-        <button @click="calculate" class="button is-primary is-medium is-rounded">
-        <span class="icon is-medium">
-          <i class="fas fa-bicycle"></i>
-        </span>
-          <span>Calculate</span>
-        </button>
+      <div class="container has-text-centered">
         <button :disabled="this.bikes.length >= this.maxBikes" @click="addBike"
                 class="button is-info is-medium is-rounded">
         <span class="icon is-medium">
@@ -32,7 +26,7 @@ import {mapMutations, mapState} from 'vuex';
 export default {
   name: "BikeParameters",
   computed: {
-    ...mapState(['activeBikeIndex', 'calculationType', 'availableBikeColors', 'bikes', 'bikesChanged']),
+    ...mapState(['activeBikeIndex', 'calculationType', 'availableBikeColors', 'bikes']),
   },
   data() {
     return {
@@ -41,11 +35,6 @@ export default {
   },
   methods: {
     ...mapMutations(['addBike', 'updateBike', 'setBikeColor']),
-    calculate() {
-      this.$emit('calculate', {
-        bikes: this.bikes
-      });
-    },
   },
   mounted() {
 
@@ -54,7 +43,6 @@ export default {
       this.setBikeColor(0);
     }
 
-    this.calculate();
   },
 }
 </script>
@@ -64,12 +52,6 @@ export default {
 
 .container {
   margin-top: 1rem;
-}
-
-#buttons-container {
-  button {
-    margin: .5rem 1rem 0 1rem;
-  }
 }
 
 </style>

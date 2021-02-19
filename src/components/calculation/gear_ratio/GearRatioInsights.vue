@@ -1,6 +1,6 @@
 <template>
   <div class="insights">
-    <Message :color="bikesChanged ? 'grey' : currentBike.color" :message-type="''">
+    <Message :color="currentBike.color" :message-type="''">
       <template slot="header">
         <span class="icon">
           <i class="fas fa-info-circle"></i>
@@ -21,13 +21,11 @@
 
 <script>
 import CalculationInsights from "@/components/calculation/base/CalculationInsights";
-import {mapState} from "vuex";
 
 export default {
   name: "GearRatioInsights",
   mixins: [CalculationInsights],
   computed: {
-    ...mapState(['bikesChanged']),
     minRatio() {
       // To find the smallest ratio, we divide the smallest chainring by the max cassette cog
       let smallestChainring = this.currentBike.chainrings[0].value;

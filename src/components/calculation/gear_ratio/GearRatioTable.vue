@@ -9,13 +9,13 @@
             <thead>
             <tr>
               <th><span class="icon"><i class="fas fa-arrow-circle-down"></i></span> Cassette cog</th>
-              <th v-for="(chainring, index) in bike.chainrings" :key="index">{{chainring}} tooth chainring</th>
+              <th v-for="(chainring, index) in bike.chainrings" :key="index">{{chainring.value}} tooth chainring</th>
             </tr>
             </thead>
             <tbody>
-            <tr v-for="(cog, index) in bike.cassetteCogs" :key="index">
+            <tr v-for="(cog, index) in cassetteCogs(bike.cassetteMin, bike.cassetteMax)" :key="index">
               <th>{{cog}}</th>
-              <td v-for="(chainring, index) in bike.chainrings" :key="index">{{computeGearRatio(chainring, cog)}}</td>
+              <td v-for="(chainring, index) in bike.chainrings" :key="index">{{computeGearRatio(chainring.value, cog)}}</td>
             </tr>
             </tbody>
           </table>
@@ -26,16 +26,20 @@
 </template>
 
 <script>
+import {mapState} from "vuex";
+import _ from 'lodash';
+
 export default {
   name: "GearRatioTable",
-  props: {
-    bikes: {
-      type: Array,
-    }
+  computed: {
+    ...mapState(['bikes']),
   },
   methods: {
     computeGearRatio(chainring, cog) {
       return (chainring / cog).toFixed(2);
+    },
+    cassetteCogs(cassetteMin, cassetteMax) {
+      return _.range(cassetteMin, cassetteMax + 1, 1);
     }
   }
 }

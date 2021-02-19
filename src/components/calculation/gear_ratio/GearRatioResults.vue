@@ -3,23 +3,21 @@
     <div class="box">
       <h2 class="title is-4">Results</h2>
 
-      <GearRatioChart :bikeParameters="bikeParameters"></GearRatioChart>
+      <GearRatioChart></GearRatioChart>
       <GearRatioInsights></GearRatioInsights>
     </div>
-    <GearRatioTable :bikes="bikeParameters.bikes"></GearRatioTable>
+    <GearRatioTable></GearRatioTable>
   </div>
 </template>
 
 <script>
 import GearRatioChart from "@/components/calculation/gear_ratio/GearRatioChart";
 import GearRatioTable from "@/components/calculation/gear_ratio/GearRatioTable";
-import CalculationResults from "@/components/calculation/base/CalculationResults";
 import GearRatioInsights from "@/components/calculation/gear_ratio/GearRatioInsights";
 
 export default {
   name: "GearRatioResults",
   components: {GearRatioInsights, GearRatioTable, GearRatioChart},
-  mixins: [CalculationResults],
 }
 </script>
 

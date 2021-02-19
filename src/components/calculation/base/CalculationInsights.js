@@ -4,7 +4,7 @@ import {mapGetters, mapState} from "vuex";
 export default {
     components: {Message},
     computed: {
-        ...mapState(['activeBikeIndex', 'bikesChanged', 'bikes']),
+        ...mapState(['activeBikeIndex', 'bikes']),
         ...mapGetters(['currentBike'])
     },
 }

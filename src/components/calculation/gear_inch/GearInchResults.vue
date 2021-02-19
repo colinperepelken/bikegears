@@ -5,11 +5,9 @@
 </template>
 
 <script>
-import CalculationResults from "@/components/calculation/base/CalculationResults";
 
 export default {
   name: "GearInchResults",
-  mixins: [CalculationResults]
 }
 </script>
 
