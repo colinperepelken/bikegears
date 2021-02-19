@@ -1,7 +1,7 @@
 <template>
     <div>
 
-      <BikeButtons v-if="bikes.length > 1"></BikeButtons>
+      <BikeButtons></BikeButtons>
 
       <div>
         <BikeParameters></BikeParameters>

@@ -50,11 +50,9 @@
 <script>
 import {CALCULATION_TYPES} from "@/constants";
 import {mapMutations} from 'vuex';
-import BikeButtonHelper from "@/mixins/BikeButtonHelper";
 
 export default {
   name: "Hero",
-  mixins: [BikeButtonHelper],
   computed: {
     calculationOptions() {
       return CALCULATION_TYPES.map(type => {

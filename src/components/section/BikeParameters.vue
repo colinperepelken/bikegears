@@ -5,17 +5,6 @@
 
       <component :is="calculationType.form" v-for="(bike, index) in bikes" :bike="bike"
                  :active="index === activeBikeIndex" :key="index" @bikeChanged="updateBike"></component>
-
-      <div class="container has-text-centered">
-        <button :disabled="this.bikes.length >= this.maxBikes" @click="addBike"
-                class="button is-info is-medium is-rounded">
-        <span class="icon is-medium">
-          <i class="fas fa-plus"></i>
-        </span>
-          <span>Compare</span>
-        </button>
-      </div>
-
     </div>
   </div>
 </template>
@@ -28,13 +17,8 @@ export default {
   computed: {
     ...mapState(['activeBikeIndex', 'calculationType', 'availableBikeColors', 'bikes']),
   },
-  data() {
-    return {
-      maxBikes: 5
-    }
-  },
   methods: {
-    ...mapMutations(['addBike', 'updateBike', 'setBikeColor']),
+    ...mapMutations(['updateBike', 'setBikeColor']),
   },
   mounted() {
 

@@ -5,25 +5,53 @@
         <li :class="{'is-active': index === activeBikeIndex}" :key="index" v-for="(bike, index) in bikes">
           <a @click="changeBike(index)">
             <span class="icon-text">
-            <span class="icon mr-2" :style="getBikeButtonStyle(index)"><i class="fas fa-circle"></i></span>
-            <span>Bike {{ index + 1 }}</span>
-            <span @click.stop="removeBike(index)" class="icon remove-bike-btn"><i class="fas fa-times"
-                                                                                  aria-hidden="true"></i></span>
+              <span class="icon mr-2" :style="getBikeButtonStyle(index)"><i class="fas fa-circle"></i></span>
+              <span>Bike {{ index + 1 }}</span>
+              <span @click.stop="removeBike(index)" class="icon remove-bike-btn"><i class="fas fa-times" aria-hidden="true"></i></span>
           </span>
+          </a>
+        </li>
+        <li v-if="bikes.length < maxBikes">
+          <a @click="addBike">
+            <span class="icon-text">
+              <span class="icon">
+                <i class="fas fa-plus"></i>
+              </span>
+              <span>Compare</span>
+            </span>
           </a>
         </li>
       </ul>
     </div>
+    <button :disabled="this.bikes.length >= this.maxBikes" @click="addBike"
+            class="button is-info is-medium is-rounded">
+
+    </button>
   </transition>
 
 </template>
 
 <script>
-import BikeButtonHelper from "@/mixins/BikeButtonHelper";
+import {mapMutations, mapState} from "vuex";
 
 export default {
   name: "BikeButtons",
-  mixins: [BikeButtonHelper],
+  computed: {
+    ...mapState(['bikes', 'activeBikeIndex'])
+  },
+  data() {
+    return {
+      maxBikes: 5
+    }
+  },
+  methods: {
+    ...mapMutations(['removeBike', 'addBike', 'updateBike', 'changeBike', 'setBikeColor']),
+    getBikeButtonStyle(index) {
+      return {
+        color: this.bikes[index].color,
+      }
+    },
+  }
 }
 </script>
 
