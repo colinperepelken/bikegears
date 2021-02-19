@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div class="tabs is-centered mt-2" id="bike-buttons">
+    <div class="tabs is-centered is-boxed mt-2" id="bike-buttons">
       <ul>
         <li :class="{'is-active': index === activeBikeIndex}" :key="index" v-for="(bike, index) in bikes">
           <a @click="changeBike(index)">
@@ -65,6 +65,7 @@ export default {
   margin-right: auto;
   position: sticky;
   top: 0;
+  padding-top: .4rem;
   z-index: 99;
   background: rgba(256, 256, 256, 1);
   font-size: 1.1rem;
