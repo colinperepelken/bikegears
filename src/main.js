@@ -8,11 +8,13 @@ import lodash from 'lodash'
 import Calculator from "@/components/views/Calculator";
 import Learn from "@/components/views/Learn";
 import {store} from './store';
+import VueGtag from "vue-gtag";
 
 Vue.config.productionTip = false;
 
 Vue.use(VueLodash, {lodash: lodash});
 Vue.use(VueRouter);
+Vue.use(VueGtag, {config: {id: "123todo"}});
 
 const routes = [
     {path: '/', component: Calculator},
