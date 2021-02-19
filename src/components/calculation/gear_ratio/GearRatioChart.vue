@@ -26,14 +26,14 @@ export default {
           datasets: this.bikes.map(bike => {
             return bike.chainrings.map(chainring => {
               return {
-                label: chainring.value + ' tooth chainring',
+                label: chainring + ' tooth chainring',
                 borderColor: bike.color,
                 pointBackgroundColor: bike.color,
                 // pointBorderColor: "#474647",
                 // hoverBackgroundColor: "#8ec63f",
                 data: _.range(bike.cassetteMin, bike.cassetteMax + 1, 1).map(cog => {
                   return {
-                    x: this.computeGearRatio(chainring.value, cog),
+                    x: this.computeGearRatio(chainring, cog),
                     y: cog
                   }
                 }),

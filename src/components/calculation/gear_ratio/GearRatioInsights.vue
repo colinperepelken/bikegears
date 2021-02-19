@@ -28,13 +28,13 @@ export default {
   computed: {
     minRatio() {
       // To find the smallest ratio, we divide the smallest chainring by the max cassette cog
-      let smallestChainring = this.currentBike.chainrings[0].value;
+      let smallestChainring = this.currentBike.chainrings[0];
 
       return (smallestChainring / this.currentBike.cassetteMax).toFixed(2);
     },
     maxRatio() {
       // To find the largest ratio, we divide the largest chainring by the min cassette cog
-      let largestChainring = this.currentBike.chainrings[this.currentBike.chainrings.length - 1].value;
+      let largestChainring = this.currentBike.chainrings[this.currentBike.chainrings.length - 1];
 
       return (largestChainring / this.currentBike.cassetteMin).toFixed(2);
     },

@@ -10,10 +10,7 @@ export const store = new Vuex.Store({
         bikes: [
             // Default bike settings
             {
-                chainrings: [
-                    {value: 32},
-                    {value: 44},
-                ],
+                chainrings: [32, 44],
                 cassetteMin: 11,
                 cassetteMax: 42,
             }
@@ -42,6 +39,7 @@ export const store = new Vuex.Store({
             state.bikes.splice(index, 1);
         },
         updateBike(state, bike) {
+            console.log('Setting bike data to ' + bike.cassetteMax);
             Vue.set(state.bikes, state.activeBikeIndex, {...state.bikes[state.activeBikeIndex], ...bike});
         },
         changeBike(state, index) {
