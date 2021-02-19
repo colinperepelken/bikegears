@@ -26,8 +26,12 @@ const router = new VueRouter({
     routes: routes
 });
 
+// Set up store
+store.commit('setBikeColor', 0);
+
 new Vue({
     render: h => h(App),
     router: router,
     store: store
 }).$mount('#app');
+

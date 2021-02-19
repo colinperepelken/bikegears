@@ -20,14 +20,6 @@ export default {
   methods: {
     ...mapMutations(['updateBike', 'setBikeColor']),
   },
-  mounted() {
-
-    // Ensure the initial bike colour is set when this is mounted for the first time
-    if (this.bikes[0].color === undefined) {
-      this.setBikeColor(0);
-    }
-
-  },
 }
 </script>
 
