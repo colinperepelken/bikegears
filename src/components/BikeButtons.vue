@@ -6,7 +6,7 @@
           <a @click="changeBike(index)">
             <span class="icon-text">
               <span class="icon mr-2" :style="getBikeButtonStyle(index)"><i class="fas fa-circle"></i></span>
-              <span>Bike {{ index + 1 }}</span>
+              <span>{{bike.name}}</span>
               <span v-if="bikes.length > 1" @click.stop="removeBike(index)" class="icon remove-bike-btn"><i class="fas fa-times" aria-hidden="true"></i></span>
           </span>
           </a>
@@ -17,7 +17,6 @@
               <span class="icon">
                 <i class="fas fa-plus"></i>
               </span>
-<!--              <span>Compare</span>-->
             </span>
           </a>
         </li>

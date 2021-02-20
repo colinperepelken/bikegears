@@ -4,7 +4,7 @@
     <div :class="{columns: true, 'is-centered': bikes.length === 1, 'is-mobile': true}">
       <div class="column is-full-mobile is-half-tablet" :style="{'border-color': bike.color}" v-for="(bike, index) in bikes" :key="index">
         <div class="table-container">
-          <h3 class="title is-5" :style="{color: bike.color}">Bike {{index+1}}</h3>
+          <h3 class="title is-5" :style="{color: bike.color}">{{bike.name}}</h3>
           <table class="table is-narrow is-striped is-hoverable is-bordered">
             <thead>
             <tr>

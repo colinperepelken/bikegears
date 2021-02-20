@@ -19,7 +19,9 @@ export const store = new Vuex.Store({
             state.calculationType = type;
         },
         addBike(state) {
-            Vue.set(state.bikes, state.bikes.length, _.cloneDeep(state.bikes[state.activeBikeIndex]));
+            let bike = _.cloneDeep(state.bikes[state.activeBikeIndex]);
+            bike.name = DEFAULT_BIKE_SETTINGS.name;
+            Vue.set(state.bikes, state.bikes.length, bike);
             state.activeBikeIndex = state.bikes.length - 1;
             state.bikes[state.activeBikeIndex].color = state.availableBikeColors.pop();
         },

@@ -53,4 +53,5 @@ export const DEFAULT_BIKE_SETTINGS = {
     chainrings: [32, 44],
     cassetteMin: 11,
     cassetteMax: 42,
+    name: 'Bike'
 };

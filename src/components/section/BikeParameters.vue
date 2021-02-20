@@ -2,9 +2,18 @@
   <div class="container has-text-left">
     <div class="box">
       <h2 class="title is-4">Bike Settings</h2>
-      <div class="columns is-centered" :key="activeBikeIndex" @change="updateBike(currentBike)">
+      <div class="columns is-centered is-variable is-5 has-text-centered mb-1" :key="activeBikeIndex" @change="updateBike(currentBike)">
 
-        <div class="column is-one-third-desktop" v-if="isFieldEnabled(bikeFields.FIELD_CHAINRINGS)">
+        <div class="column">
+          <div class="field">
+            <label class="label">Bike name</label>
+            <div class="control">
+              <input @change="validateName" v-model="currentBike.name" class="input" type="text" placeholder="Bike name" id="bike-name">
+            </div>
+          </div>
+        </div>
+
+        <div class="column" v-if="isFieldEnabled(bikeFields.FIELD_CHAINRINGS)">
           <div class="field">
             <label class="label">Chainrings</label>
             <div class="control chainring-control" v-for="(chainring, index) in chainrings" :key="index">
@@ -22,16 +31,16 @@
 
             </div>
             <button @click="addChainring" :disabled="currentBike.chainrings.length >= maxNumChainrings"
-                    class="button is-small is-info" id="add-chainring">
+                    class="button is-small is-info is-rounded" id="add-chainring">
               <span class="icon is-small">
                 <i class="fas fa-plus"></i>
               </span>
-              <span>Add Chainring</span>
+              <span>Add</span>
             </button>
           </div>
         </div>
 
-        <div class="column is-one-third-desktop" v-if="isFieldEnabled(bikeFields.FIELD_CASSETTE)">
+        <div class="column" v-if="isFieldEnabled(bikeFields.FIELD_CASSETTE)">
           <!--          <img src="../../assets/cassette.png">-->
           <div class="field">
             <label class="label">Min. Cassette Cog Tooth Count</label>
@@ -104,6 +113,11 @@ export default {
     },
     isFieldEnabled(fieldName) {
       return this.calculationType.fields.includes(fieldName);
+    },
+    validateName() {
+      if (this.currentBike.name.length === 0) {
+        this.currentBike.name = 'Bike';
+      }
     }
   },
   beforeMount() {
@@ -136,8 +150,18 @@ export default {
 }
 
 .column {
+
+  border: 1px solid #ededed;
+  border-radius: 5px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+
   img {
     height: 3rem;
   }
+}
+
+#bike-name {
+  max-width: 12rem;
 }
 </style>
