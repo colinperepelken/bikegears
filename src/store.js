@@ -9,7 +9,7 @@ export const store = new Vuex.Store({
     state: {
         calculationType: CALCULATION_TYPES[0],
         bikes: [
-            DEFAULT_BIKE_SETTINGS
+            _.cloneDeep(DEFAULT_BIKE_SETTINGS)
         ],
         activeBikeIndex: 0,
         availableBikeColors: BIKE_COLORS,
