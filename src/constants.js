@@ -34,18 +34,18 @@ export const CALCULATION_TYPES = [
     {
         id: 'gear_meters',
         name: 'Meters of development',
-        form: null,
+        fields: [BIKE_FIELDS.FIELD_CHAINRINGS, BIKE_FIELDS.FIELD_CASSETTE, BIKE_FIELDS.FIELD_RIM, BIKE_FIELDS.FIELD_WHEEL],
         results: null,
         learn: null,
-        enabled: false
+        enabled: true
     },
     {
         id: 'speed',
         name: 'Speed',
-        form: null,
+        fields: [BIKE_FIELDS.FIELD_CHAINRINGS, BIKE_FIELDS.FIELD_CASSETTE, BIKE_FIELDS.FIELD_RIM, BIKE_FIELDS.FIELD_WHEEL, BIKE_FIELDS.FIELD_UNITS],
         results: null,
         learn: null,
-        enabled: false
+        enabled: true
     }
 ];
 
@@ -53,5 +53,16 @@ export const DEFAULT_BIKE_SETTINGS = {
     chainrings: [32, 44],
     cassetteMin: 11,
     cassetteMax: 42,
-    name: 'Bike'
+    name: 'Bike',
+    rimSize: 622,
+    tireSize: 23
 };
+
+// BSD is beat seat diameter in mm
+export const RIM_SIZES = [
+    {name: '27""', bsd: 630},
+    {name: '700c / 29"', bsd: 622},
+    {name: '650b / 27.5"', bsd: 571},
+    {name: '650c', bsd: 584},
+    {name: '26"', bsd: 559},
+];

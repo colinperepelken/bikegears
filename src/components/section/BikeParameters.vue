@@ -2,13 +2,15 @@
   <div class="container has-text-left">
     <div class="box">
       <h2 class="title is-4">Bike Settings</h2>
-      <div class="columns is-centered is-variable is-5 has-text-centered mb-1" :key="activeBikeIndex" @change="updateBike(currentBike)">
+      <div class="columns is-centered is-variable is-5 has-text-centered mb-1" :key="activeBikeIndex"
+           @change="updateBike(currentBike)">
 
         <div class="column">
           <div class="field">
             <label class="label">Bike name</label>
             <div class="control">
-              <input @change="validateName" v-model="currentBike.name" class="input" type="text" placeholder="Bike name" id="bike-name">
+              <input @change="validateName" v-model="currentBike.name" class="input" type="text" placeholder="Bike name"
+                     id="bike-name">
             </div>
           </div>
         </div>
@@ -23,7 +25,8 @@
                   </option>
                 </select>
               </div>
-              <a v-if="currentBike.chainrings.length > 1" class="remove-chainring-btn has-text-danger-dark" @click="removeChainring">
+              <a v-if="currentBike.chainrings.length > 1" class="remove-chainring-btn has-text-danger-dark"
+                 @click="removeChainring">
                 <span class="icon is-small">
                 <i class="fas fa-times"></i>
               </span>
@@ -31,7 +34,7 @@
 
             </div>
             <button @click="addChainring" :disabled="currentBike.chainrings.length >= maxNumChainrings"
-                    class="button is-small is-info is-rounded" id="add-chainring">
+                    class="button is-small is-default is-rounded" id="add-chainring">
               <span class="icon is-small">
                 <i class="fas fa-plus"></i>
               </span>
@@ -43,7 +46,7 @@
         <div class="column" v-if="isFieldEnabled(bikeFields.FIELD_CASSETTE)">
           <!--          <img src="../../assets/cassette.png">-->
           <div class="field">
-            <label class="label">Min. Cassette Cog Tooth Count</label>
+            <label class="label">Min. Cassette Cog</label>
             <div class="control">
               <div class="select">
                 <select v-model="currentBike.cassetteMin">
@@ -54,7 +57,7 @@
           </div>
 
           <div class="field">
-            <label class="label">Max. Cassette Cog Tooth Count</label>
+            <label class="label">Max. Cassette Cog</label>
             <div class="control">
               <div class="select">
                 <select v-model="currentBike.cassetteMax">
@@ -64,6 +67,55 @@
             </div>
           </div>
         </div>
+
+        <div class="column" v-if="isFieldEnabled(bikeFields.FIELD_RIM) || isFieldEnabled(bikeFields.FIELD_WHEEL)">
+
+          <div class="field" v-if="isFieldEnabled(bikeFields.FIELD_RIM)">
+            <label class="label">Rim size</label>
+            <div class="control">
+              <div class="select">
+                <select v-model="currentBike.rimSize">
+                  <option v-for="(rim, index) in rimOptions" :key="index" :value="rim.bsd">{{ rim.name }}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div v-if="isFieldEnabled(bikeFields.FIELD_WHEEL)">
+            <label class="label">Tire size</label>
+            <div class="field has-addons has-addons-centered">
+              <p class="control">
+                <input class="input" type="text" placeholder="Tire size" v-model="currentBike.tireSize" id="tire-size">
+              </p>
+              <p class="control">
+                <span class="select">
+                  <select>
+                    <option>mm</option>
+                    <option>inches</option>
+                  </select>
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="column" v-if="isFieldEnabled(bikeFields.FIELD_UNITS)">
+
+          <div class="field">
+            <label class="label">Units</label>
+            <div class="control">
+              <label class="radio">
+                <input type="radio" name="answer">
+                km/h
+              </label>
+              <label class="radio">
+                <input type="radio" name="answer">
+                mph
+              </label>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   </div>
@@ -72,14 +124,15 @@
 <script>
 import {mapGetters, mapMutations, mapState} from 'vuex';
 import _ from "lodash";
-import {BIKE_FIELDS} from "@/constants";
+import {BIKE_FIELDS, RIM_SIZES} from "@/constants";
 
 export default {
   name: "BikeParameters",
   data() {
     return {
       maxNumChainrings: 3,
-      bikeFields: {}
+      bikeFields: {},
+      rimOptions: RIM_SIZES,
     }
   },
   computed: {
@@ -163,5 +216,9 @@ export default {
 
 #bike-name {
   max-width: 12rem;
+}
+
+#tire-size {
+  max-width: 4rem;
 }
 </style>
