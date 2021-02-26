@@ -58,7 +58,7 @@ export const DEFAULT_BIKE_SETTINGS = {
     tireSize: 23
 };
 
-// BSD is beat seat diameter in mm
+// BSD is bead seat diameter in mm
 export const RIM_SIZES = [
     {name: '27""', bsd: 630},
     {name: '700c / 29"', bsd: 622},
