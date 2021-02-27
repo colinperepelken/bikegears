@@ -50,9 +50,9 @@ export const CALCULATION_TYPES = [
 ];
 
 export const DEFAULT_BIKE_SETTINGS = {
-    chainrings: [32, 44],
+    chainrings: [34, 50],
     cassetteMin: 11,
-    cassetteMax: 42,
+    cassetteMax: 28,
     name: 'Bike',
     rimSize: 622,
     tireSize: 23

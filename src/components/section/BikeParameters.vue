@@ -142,7 +142,7 @@ export default {
       return _.range(5, 60, 1);
     },
     chainringOptions() {
-      return _.range(5, 60, 1)
+      return _.range(5, 60, 1);
     },
     chainrings() {
       return this.currentBike.chainrings.map(chainring => {
@@ -153,7 +153,7 @@ export default {
   methods: {
     ...mapMutations(['updateBike', 'setBikeColor']),
     addChainring() {
-      this.currentBike.chainrings.push(36);
+      this.currentBike.chainrings.push(34);
       this.updateBike(this.currentBike);
     },
     removeChainring(index) {
