@@ -1,5 +1,5 @@
 <template>
-  <div class="container has-text-left">
+  <div class="container has-text-left bike-parameters">
     <div class="box">
       <h2 class="title is-4">Bike Settings</h2>
       <div class="columns is-centered is-variable is-5 has-text-centered mb-1" :key="activeBikeIndex"
