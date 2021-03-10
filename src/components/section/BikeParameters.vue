@@ -43,13 +43,13 @@
           </div>
         </div>
 
-        <div class="column" v-if="isFieldEnabled(bikeFields.FIELD_CASSETTE)">
+        <div class="column" v-if="isFieldEnabled(bikeFields.FIELD_CASSETTE)" @change.stop="updateCassette">
           <!--          <img src="../../assets/cassette.png">-->
           <div class="field">
             <label class="label">Min. Cassette Cog</label>
             <div class="control">
               <div class="select">
-                <select v-model="currentBike.cassetteMin">
+                <select v-model="cassetteMin">
                   <option v-for="(cog, index) in cassetteOptions" :key="index" :value="cog">{{ cog }} tooth</option>
                 </select>
               </div>
@@ -59,11 +59,12 @@
           <div class="field">
             <label class="label">Max. Cassette Cog</label>
             <div class="control">
-              <div class="select">
-                <select v-model="currentBike.cassetteMax">
+              <div :class="{select: true, 'is-danger': ! validateCassette()}">
+                <select v-model="cassetteMax">
                   <option v-for="(cog, index) in cassetteOptions" :key="index" :value="cog">{{ cog }} tooth</option>
                 </select>
               </div>
+              <p v-if="! validateCassette()" class="help is-danger">Max cassette cog must be greater than or equal to the min cassette cog</p>
             </div>
           </div>
         </div>
@@ -81,20 +82,21 @@
             </div>
           </div>
 
-          <div v-if="isFieldEnabled(bikeFields.FIELD_WHEEL)">
+          <div v-if="isFieldEnabled(bikeFields.FIELD_WHEEL)" @change.stop="updateTireSize">
             <label class="label">Tire size</label>
             <div class="field has-addons has-addons-centered">
-              <p class="control">
-                <input class="input" type="text" placeholder="Tire size" v-model="currentBike.tireSize" id="tire-size">
-              </p>
-              <p class="control">
+              <div class="control">
+                <input :class="{input: true, 'is-danger': ! validateTireSize()}" type="text" placeholder="Tire size" v-model="tireSize" id="tire-size">
+                <p v-if="! validateTireSize()" class="help is-danger">Invalid tire size</p>
+              </div>
+              <div class="control">
                 <span class="select">
-                  <select>
+                  <select v-model="tireUnits">
                     <option>mm</option>
                     <option>inches</option>
                   </select>
                 </span>
-              </p>
+              </div>
             </div>
           </div>
         </div>
@@ -124,7 +126,7 @@
 <script>
 import {mapGetters, mapMutations, mapState} from 'vuex';
 import _ from "lodash";
-import {BIKE_FIELDS, RIM_SIZES} from "@/constants";
+import {BIKE_FIELDS, DEFAULT_BIKE_SETTINGS, RIM_SIZES} from "@/constants";
 
 export default {
   name: "BikeParameters",
@@ -133,6 +135,10 @@ export default {
       maxNumChainrings: 3,
       bikeFields: {},
       rimOptions: RIM_SIZES,
+      tireUnits: 'mm',
+      tireSize: DEFAULT_BIKE_SETTINGS.tireSize,
+      cassetteMin: DEFAULT_BIKE_SETTINGS.cassetteMin,
+      cassetteMax: DEFAULT_BIKE_SETTINGS.cassetteMax
     }
   },
   computed: {
@@ -171,10 +177,56 @@ export default {
       if (this.currentBike.name.length === 0) {
         this.currentBike.name = 'Bike';
       }
+    },
+    validateTireSize() {
+      if (isNaN(this.tireSize)) {
+        return false;
+      }
+
+      if (this.tireUnits === 'inches') {
+        return this.tireSize >= 0.1 && this.tireSize <= 10;
+      }
+
+      return this.tireSize >= 10 && this.tireSize <= 200;
+    },
+    validateCassette() {
+      return this.cassetteMax >= this.cassetteMin;
+    },
+    /**
+     * We need to do this rather than just updating the bike because
+     * we need to convert from inches to mm if applicable
+     */
+    updateTireSize() {
+      if (this.validateTireSize()) {
+        if (this.tireUnits === 'inches') {
+          this.currentBike.tireSize = this.tireSize * 25.4; // Convert inches to mm
+        } else {
+          this.currentBike.tireSize = this.tireSize;
+        }
+
+        this.updateBike(this.currentBike);
+      }
+    },
+    /**
+     * Validate these fields before updating
+     */
+    updateCassette() {
+      if (this.validateCassette()) {
+        this.currentBike.cassetteMin = this.cassetteMin;
+        this.currentBike.cassetteMax = this.cassetteMax;
+        this.updateBike(this.currentBike);
+      }
     }
   },
   beforeMount() {
     this.bikeFields = BIKE_FIELDS;
+  },
+  watch: {
+    activeBikeIndex() {
+      this.tireSize = this.currentBike.tireSize;
+      this.cassetteMin = this.currentBike.cassetteMin;
+      this.cassetteMax = this.currentBike.cassetteMax;
+    }
   }
 }
 </script>
