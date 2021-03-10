@@ -22,14 +22,15 @@
           <div :class="{'navbar-menu': true, 'is-active': showMobileMenu}">
 
             <div class="navbar-end">
+
               <router-link to="/" :class="{'navbar-item': true, 'is-active': isActivePath('/')}">Calculator
               </router-link>
               <router-link to="/learn" :class="{'navbar-item': true, 'is-active': isActivePath('/learn')}">Learn
               </router-link>
+
+              <vue-kofi class="navbar-item" uid="Z8Z23WLV3" color="hsl(217, 71%,  53%)" text="Buy me a coffee"></vue-kofi>
+
             </div>
-
-            <vue-kofi class="mt-2 ml-2" uid="Z8Z23WLV3" color="hsl(217, 71%,  53%)" text="Buy me a coffee"></vue-kofi>
-
           </div>
         </div>
       </nav>
@@ -43,6 +44,15 @@
                     :value="option.value">{{ option.text }}
             </option>
           </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-foot has-text-right">
+      <div id="dark-mode-item" class="mr-2 mb-2">
+        <div class="field">
+          <input id="dark-mode-switch" type="checkbox" name="switchRoundedDefault" class="switch is-rounded is-small" checked="checked">
+          <label for="dark-mode-switch">Dark mode</label>
         </div>
       </div>
     </div>
@@ -130,6 +140,12 @@ section.hero.is-info {
       background-color: rgba(20, 20, 20, .93);
       background-image: unset;
     }
+  }
+}
+
+#dark-mode-item {
+  .switch[type=checkbox] + label {
+    font-size: .8rem;
   }
 }
 </style>
