@@ -22,6 +22,15 @@ export const setTheme = theme => {
     localStorage.setItem('theme', theme);
 }
 
+export const getTheme = () => {
+    let theme = document.documentElement.getAttribute('data-theme');
+    if (!theme) {
+        return THEME_LIGHT;
+    }
+
+    return theme;
+}
+
 export default {
     data() {
         return {
@@ -30,7 +39,8 @@ export default {
     },
     methods: {
         detectTheme,
-        setTheme
+        setTheme,
+        getTheme
     },
     watch: {
         darkMode() {
