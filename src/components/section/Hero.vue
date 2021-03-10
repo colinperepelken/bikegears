@@ -6,6 +6,7 @@
         <div class="container">
           <div class="navbar-brand">
             <a href="/" class="navbar-item">
+              <img src="../../assets/logo.png" height="100%" class="mr-2">
               <h1 class="title is-4">Bike Gears</h1>
             </a>
 
