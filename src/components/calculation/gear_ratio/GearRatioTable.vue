@@ -85,12 +85,14 @@ export default {
   }
 }
 
-table {
-  width: 100%;
-
-  thead > tr > th:first-child {
+[data-theme="light"] {
+  table thead > tr > th:first-child {
     background-color: #ededed;
   }
+}
+
+table {
+  width: 100%;
 
   thead {
     th {

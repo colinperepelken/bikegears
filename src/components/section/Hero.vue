@@ -28,7 +28,8 @@
               <router-link to="/learn" :class="{'navbar-item': true, 'is-active': isActivePath('/learn')}">Learn
               </router-link>
 
-              <vue-kofi class="navbar-item" uid="Z8Z23WLV3" color="hsl(217, 71%,  53%)" text="Buy me a coffee"></vue-kofi>
+              <vue-kofi class="navbar-item" uid="Z8Z23WLV3" color="hsl(217, 71%,  53%)"
+                        text="Buy me a coffee"></vue-kofi>
 
             </div>
           </div>
@@ -51,8 +52,16 @@
     <div class="hero-foot has-text-right">
       <div id="dark-mode-item" class="mr-2 mb-2">
         <div class="field">
-          <input v-model="darkMode" id="dark-mode-switch" type="checkbox" name="switchRoundedDefault" class="switch is-rounded is-small" checked="checked">
-          <label for="dark-mode-switch">Dark mode</label>
+          <input v-model="darkMode" id="dark-mode-switch" type="checkbox" name="switchRoundedDefault"
+                 class="switch is-rounded is-small" checked="checked">
+          <label for="dark-mode-switch">
+            <span v-show="darkMode" class="icon">
+              <i class="fas fa-moon"></i>
+            </span>
+            <span v-show="! darkMode" class="icon">
+              <i class="fas fa-sun"></i>
+            </span>
+          </label>
         </div>
       </div>
     </div>
@@ -116,6 +125,16 @@ section.hero.is-info {
   .navbar-brand {
     .navbar-item {
       background-color: transparent;
+
+      img {
+        position: absolute;
+        height: 50px;
+        max-height: none;
+      }
+
+      h1 {
+        margin-left: 4.5rem;
+      }
     }
 
     .navbar-burger {

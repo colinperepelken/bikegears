@@ -40,5 +40,8 @@ export default {
                 this.setTheme(THEME_LIGHT);
             }
         }
+    },
+    mounted() {
+        this.darkMode = this.detectTheme;
     }
 };

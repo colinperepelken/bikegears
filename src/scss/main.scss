@@ -15,6 +15,10 @@ html {
   scroll-behavior: smooth;
 }
 
+html, body {
+  overflow: auto;
+}
+
 [data-theme="dark"] {
   @import "theme/dark";
 }

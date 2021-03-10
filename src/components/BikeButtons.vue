@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div class="tabs is-centered is-boxed mt-2" id="bike-buttons">
+    <div class="tabs is-centered is-boxed" id="bike-buttons">
       <ul>
         <li :class="{'is-active': index === activeBikeIndex}" :key="index" v-for="(bike, index) in bikes">
           <a @click="changeBike(index)">
@@ -53,6 +53,12 @@ export default {
 <style scoped lang="scss">
 @import '~bulma/sass/utilities/all';
 
+[data-theme="light"] {
+  #bike-buttons {
+    background: rgba(256, 256, 256, 1);
+  }
+}
+
 #bike-buttons {
   width: 100%;
   margin-left: auto;
@@ -61,7 +67,6 @@ export default {
   top: 0;
   padding-top: .4rem;
   z-index: 99;
-  background: rgba(256, 256, 256, 1);
   font-size: 1.1rem;
 
   .icon-text > span {
