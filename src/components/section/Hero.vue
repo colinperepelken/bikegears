@@ -28,6 +28,8 @@
               </router-link>
             </div>
 
+            <vue-kofi class="mt-2 ml-2" uid="Z8Z23WLV3" color="hsl(217, 71%,  53%)" text="Buy me a coffee"></vue-kofi>
+
           </div>
         </div>
       </nav>

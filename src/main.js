@@ -9,12 +9,14 @@ import Calculator from "@/components/views/Calculator";
 import Learn from "@/components/views/Learn";
 import {store} from './store';
 import VueGtag from "vue-gtag";
+import VueKofi from 'vue-kofi';
 
 Vue.config.productionTip = false;
 
 Vue.use(VueLodash, {lodash: lodash});
 Vue.use(VueRouter);
 Vue.use(VueGtag, {config: {id: "123todo"}});
+Vue.use(VueKofi);
 
 const routes = [
     {path: '/', component: Calculator},
