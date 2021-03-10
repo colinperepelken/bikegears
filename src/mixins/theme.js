@@ -49,9 +49,12 @@ export default {
             } else {
                 this.setTheme(THEME_LIGHT);
             }
+
+            this.$store.commit('setDarkMode', this.darkMode);
         }
     },
     mounted() {
-        this.darkMode = this.detectTheme;
+        this.darkMode = this.detectTheme() === THEME_DARK;
+        this.$store.commit('setDarkMode', this.darkMode);
     }
 };

@@ -13,6 +13,7 @@ export const store = new Vuex.Store({
         ],
         activeBikeIndex: 0,
         availableBikeColors: BIKE_COLORS,
+        darkMode: false
     },
     mutations: {
         setCalculationType(state, type) {
@@ -42,6 +43,9 @@ export const store = new Vuex.Store({
         },
         setBikeColor(state, index) {
             state.bikes[index].color = state.availableBikeColors.pop();
+        },
+        setDarkMode(state, value) {
+            state.darkMode = value;
         }
     },
     getters: {
