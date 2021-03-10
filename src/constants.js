@@ -66,3 +66,5 @@ export const RIM_SIZES = [
     {name: '650c', bsd: 584},
     {name: '26"', bsd: 559},
 ];
+
+export const DONATE_URL = 'https://ko-fi.com/colinperepelken';

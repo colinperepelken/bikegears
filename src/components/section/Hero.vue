@@ -28,8 +28,14 @@
               <router-link to="/learn" :class="{'navbar-item': true, 'is-active': isActivePath('/learn')}">Learn
               </router-link>
 
-              <vue-kofi class="navbar-item" uid="Z8Z23WLV3" color="hsl(217, 71%,  53%)"
-                        text="Buy me a coffee"></vue-kofi>
+              <span class="navbar-item">
+              <a class="button is-info is-small" :href="donateUrl" target="_blank">
+                <span class="icon mr-2">
+                  <i class="fas fa-coffee"></i>
+                </span>
+                <span>Buy me a coffee</span>
+              </a>
+            </span>
 
             </div>
           </div>
@@ -70,7 +76,7 @@
 </template>
 
 <script>
-import {CALCULATION_TYPES} from "@/constants";
+import {CALCULATION_TYPES, DONATE_URL} from "@/constants";
 import {mapMutations} from 'vuex';
 import theme from "@/mixins/theme";
 
@@ -91,7 +97,8 @@ export default {
   data() {
     return {
       currentType: CALCULATION_TYPES[0].id,
-      showMobileMenu: false
+      showMobileMenu: false,
+      donateUrl: DONATE_URL
     }
   },
   mounted() {
