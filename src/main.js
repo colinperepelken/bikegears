@@ -10,6 +10,7 @@ import Learn from "@/components/views/Learn";
 import {store} from './store';
 import VueGtag from "vue-gtag";
 import VueKofi from 'vue-kofi';
+import {detectTheme, setTheme} from "@/mixins/theme";
 
 Vue.config.productionTip = false;
 
@@ -17,6 +18,8 @@ Vue.use(VueLodash, {lodash: lodash});
 Vue.use(VueRouter);
 Vue.use(VueGtag, {config: {id: "123todo"}});
 Vue.use(VueKofi);
+
+setTheme(detectTheme());
 
 const routes = [
     {path: '/', component: Calculator},

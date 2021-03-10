@@ -51,7 +51,7 @@
     <div class="hero-foot has-text-right">
       <div id="dark-mode-item" class="mr-2 mb-2">
         <div class="field">
-          <input id="dark-mode-switch" type="checkbox" name="switchRoundedDefault" class="switch is-rounded is-small" checked="checked">
+          <input v-model="darkMode" id="dark-mode-switch" type="checkbox" name="switchRoundedDefault" class="switch is-rounded is-small" checked="checked">
           <label for="dark-mode-switch">Dark mode</label>
         </div>
       </div>
@@ -63,9 +63,11 @@
 <script>
 import {CALCULATION_TYPES} from "@/constants";
 import {mapMutations} from 'vuex';
+import theme from "@/mixins/theme";
 
 export default {
   name: "Hero",
+  mixins: [theme],
   computed: {
     calculationOptions() {
       return CALCULATION_TYPES.map(type => {
@@ -93,7 +95,7 @@ export default {
     },
     isActivePath(path) {
       return this.$route.path === path;
-    }
+    },
   }
 }
 </script>
