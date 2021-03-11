@@ -9,7 +9,7 @@ import Calculator from "@/components/views/Calculator";
 import Learn from "@/components/views/Learn";
 import {store} from './store';
 import VueGtag from "vue-gtag";
-import {detectTheme, setTheme} from "@/mixins/theme";
+import {detectTheme, setTheme} from "@/mixins/Theme";
 
 Vue.config.productionTip = false;
 

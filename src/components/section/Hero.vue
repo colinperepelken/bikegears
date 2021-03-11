@@ -29,13 +29,8 @@
               </router-link>
 
               <span class="navbar-item">
-              <a class="button is-info is-small" :href="donateUrl" target="_blank">
-                <span class="icon mr-2">
-                  <i class="fas fa-coffee"></i>
-                </span>
-                <span>Buy me a coffee</span>
-              </a>
-            </span>
+                <DonateButton></DonateButton>
+              </span>
 
             </div>
           </div>
@@ -57,18 +52,7 @@
 
     <div class="hero-foot has-text-right">
       <div id="dark-mode-item" class="mr-2 mb-2">
-        <div class="field">
-          <input v-model="darkMode" id="dark-mode-switch" type="checkbox" name="switchRoundedDefault"
-                 class="switch is-rounded is-small" checked="checked">
-          <label for="dark-mode-switch">
-            <span v-show="darkMode" class="icon">
-              <i class="fas fa-moon"></i>
-            </span>
-            <span v-show="! darkMode" class="icon">
-              <i class="fas fa-sun"></i>
-            </span>
-          </label>
-        </div>
+        <DarkModeSwitch></DarkModeSwitch>
       </div>
     </div>
 
@@ -76,13 +60,14 @@
 </template>
 
 <script>
-import {CALCULATION_TYPES, DONATE_URL} from "@/constants";
+import {CALCULATION_TYPES} from "@/constants";
 import {mapMutations} from 'vuex';
-import theme from "@/mixins/theme";
+import DarkModeSwitch from "@/components/partials/DarkModeSwitch";
+import DonateButton from "@/components/partials/DonateButton";
 
 export default {
   name: "Hero",
-  mixins: [theme],
+  components: {DonateButton, DarkModeSwitch},
   computed: {
     calculationOptions() {
       return CALCULATION_TYPES.map(type => {
@@ -98,7 +83,6 @@ export default {
     return {
       currentType: CALCULATION_TYPES[0].id,
       showMobileMenu: false,
-      donateUrl: DONATE_URL
     }
   },
   mounted() {
