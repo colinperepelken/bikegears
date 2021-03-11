@@ -1,8 +1,10 @@
 export const THEME_DARK = 'dark';
 export const THEME_LIGHT = 'light';
 
+export const THEME_DEFAULT = THEME_DARK;
+
 export const detectTheme = () => {
-    let theme = THEME_LIGHT;
+    let theme = THEME_DEFAULT;
 
     if (localStorage.getItem('theme')) {
         if (localStorage.getItem('theme') === THEME_DARK) {
