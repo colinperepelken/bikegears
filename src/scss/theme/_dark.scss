@@ -93,6 +93,14 @@ select {
   background-color: $grey-dark;
 }
 
+.table.is-hoverable.is-striped tbody tr:not(.is-selected):hover:nth-child(even) {
+  background-color: $grey;
+}
+
+.table.is-hoverable.is-striped tbody tr:not(.is-selected):hover {
+  background-color: $grey-light;
+}
+
 .message {
   background-color: $grey;
 
