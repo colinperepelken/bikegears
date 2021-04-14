@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container" id="learn-view">
     <div class="box">
       <component :is="calculationType.learn"></component>
     </div>

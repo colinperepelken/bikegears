@@ -85,20 +85,63 @@
     </div>
 
     <div class="section">
-      <h3 class="title is-5">What is a Cassette</h3>
+      <h3 class="title is-5">What is a Cassette?</h3>
       <article class="tile is-12 mb-3">
-        <div class="content">
-          <p>A cassette (or freewheel) is mounted on the center of the rear wheel of a bicycle.</p>
+        <div class="content columns">
+          <div class="column">
+            <p>A cassette (or freewheel) is mounted on the center of the rear wheel of a bicycle.</p>
+            <p>It is made up of separate cogs, each having a different number of teeth. When combined with a chainring on the front, this allows your rear wheel to rotate at a different speed compared to your pedals.</p>
+            <p>If you look closely at the example on the right, you will see that this cassette has 10 cogs (or 10 speeds).</p>
+            <p>You can count the number of teeth on the smallest cog to find your minimum cassette cog.</p>
+            <p>You can count the number of teeth on the largest cog to find your maximum cassette cog.</p>
+          </div>
+          <div class="column">
+            <figure class="image">
+              <img src="@/assets/cassette.jpg" alt="Image of a rear cassette">
+            </figure>
+          </div>
         </div>
       </article>
     </div>
 
     <div class="section">
-      <h3 class="title is-5">What is a Chainring</h3>
+      <h3 class="title is-5">What are Chainrings?</h3>
+      <article class="tile is-12 mb-3">
+        <div class="content columns">
+          <div class="column">
+            <figure class="image">
+              <img src="@/assets/crank.jpg" alt="Image of crankset, showing 3 chainrings">
+            </figure>
+          </div>
+          <div class="column">
+            <p>The pedals, crank arm, chainrings, and bottom bracket make up what is called a <i>crankset</i>. The chainrings are attached to the crank arms, and spin as you pedal.</p>
+            <p>There are usually between 1 and 3 chainrings on a bike. If you look closely at the image on the left, you will see 3 chainrings.</p>
+            <p>If you have more than one chainring, you will be able to shift between them to increase or decrease your gear ratio.</p>
+            <ul>
+              <li>A <strong>smaller chainring</strong> corresponds to a <strong>smaller gear ratio</strong></li>
+              <li>A <strong>larger chainring</strong> corresponds to a <strong>larger gear ratio</strong></li>
+            </ul>
+            <p>The number of teeth is usually printed on each chainring. If you can't find it, you can count the teeth on a chainring to determine it's size.</p>
+          </div>
+        </div>
+      </article>
+
     </div>
 
     <div class="section">
       <h3 class="title is-5">What is gear range?</h3>
+      <article class="tile is-12 mb-3">
+        <div class="content columns">
+          <div class="column">
+            <p>A <i>gear range</i> refers to the difference between the highest and lowest gears. You can calculate gear range using the following formula:</p>
+          </div>
+          <div class="column has-text-centered">
+            <p class="is-italic is-size-4">
+              (min. gear ratio / max gear ratio) * 100 = <b>gear range</b>
+            </p>
+          </div>
+        </div>
+      </article>
     </div>
 
     <div class="section">
@@ -168,5 +211,9 @@ export default {
 
   .subtitle:not(:first-child) {
     margin-top: 1rem;
+  }
+
+  .image > img {
+    border-radius: 4px;
   }
 </style>

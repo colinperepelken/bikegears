@@ -149,3 +149,9 @@ body::-webkit-scrollbar-thumb, .columns::-webkit-scrollbar-thumb {
   background-color: white; /* color of the scroll thumb */
   border: 3px solid $grey-dark; /* creates padding around scroll thumb */
 }
+
+#learn-view {
+  .image img {
+    border-color: $grey-light;
+  }
+}
