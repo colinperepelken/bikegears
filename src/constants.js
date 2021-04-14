@@ -37,7 +37,7 @@ export const CALCULATION_TYPES = [
         fields: [BIKE_FIELDS.FIELD_CHAINRINGS, BIKE_FIELDS.FIELD_CASSETTE, BIKE_FIELDS.FIELD_RIM, BIKE_FIELDS.FIELD_WHEEL],
         results: null,
         learn: null,
-        enabled: true
+        enabled: false
     },
     {
         id: 'speed',
@@ -45,7 +45,7 @@ export const CALCULATION_TYPES = [
         fields: [BIKE_FIELDS.FIELD_CHAINRINGS, BIKE_FIELDS.FIELD_CASSETTE, BIKE_FIELDS.FIELD_RIM, BIKE_FIELDS.FIELD_WHEEL, BIKE_FIELDS.FIELD_UNITS],
         results: null,
         learn: null,
-        enabled: true
+        enabled: false
     }
 ];
 
