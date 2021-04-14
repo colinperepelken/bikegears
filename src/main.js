@@ -15,7 +15,10 @@ Vue.config.productionTip = false;
 
 Vue.use(VueLodash, {lodash: lodash});
 Vue.use(VueRouter);
-Vue.use(VueGtag, {config: {id: process.env.VUE_APP_GANALYTICS_ID}});
+
+if (process.env.VUE_APP_GANALYTICS_ID !== undefined) {
+    Vue.use(VueGtag, {config: {id: process.env.VUE_APP_GANALYTICS_ID}});
+}
 
 setTheme(detectTheme());
 
