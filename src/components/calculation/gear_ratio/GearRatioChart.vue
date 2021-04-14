@@ -1,5 +1,5 @@
 <template>
-  <div class="box calculator-section">
+  <div class="box">
     <h2 class="title is-4">Results</h2>
     <scatter-chart
         v-if="loaded"

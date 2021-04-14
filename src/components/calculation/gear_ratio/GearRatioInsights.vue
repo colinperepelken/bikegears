@@ -1,5 +1,5 @@
 <template>
-  <div class="calculator-section">
+  <div>
     <Message :color="currentBike.color" :message-type="''">
       <template slot="header">
         <span class="icon">

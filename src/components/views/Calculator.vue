@@ -5,7 +5,9 @@
         <BikeParameters></BikeParameters>
         <div class="results-container">
           <div class="container has-text-left">
-            <component v-for="component in calculationType.results" :is="component" :key="component"></component>
+            <div class="calculator-section">
+              <component v-for="component in calculationType.results" :is="component" :key="component"></component>
+            </div>
           </div>
         </div>
       </div>
