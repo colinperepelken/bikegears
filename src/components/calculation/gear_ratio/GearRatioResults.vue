@@ -1,11 +1,7 @@
 <template>
   <div class="container has-text-left">
-    <div class="box">
-      <h2 class="title is-4">Results</h2>
-
-      <GearRatioChart></GearRatioChart>
-      <GearRatioInsights></GearRatioInsights>
-    </div>
+    <GearRatioChart></GearRatioChart>
+    <GearRatioInsights></GearRatioInsights>
     <GearRatioTable></GearRatioTable>
   </div>
 </template>
@@ -22,7 +18,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.container {
-  margin-top: 1rem;
-}
+
 </style>

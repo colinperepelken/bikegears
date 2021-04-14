@@ -1,10 +1,13 @@
 <template>
-  <scatter-chart
-      v-if="loaded"
-      :chartdata="chartdata"
-      :options="options"
-      :styles="styles"
-  ></scatter-chart>
+  <div class="box calculator-section">
+    <h2 class="title is-4">Results</h2>
+    <scatter-chart
+        v-if="loaded"
+        :chartdata="chartdata"
+        :options="options"
+        :styles="styles"
+    ></scatter-chart>
+  </div>
 </template>
 
 <script>

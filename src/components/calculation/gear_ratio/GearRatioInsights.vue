@@ -1,5 +1,5 @@
 <template>
-  <div class="insights">
+  <div class="calculator-section">
     <Message :color="currentBike.color" :message-type="''">
       <template slot="header">
         <span class="icon">
@@ -51,7 +51,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.insights {
-  margin-top: 1rem;
-}
+
 </style>

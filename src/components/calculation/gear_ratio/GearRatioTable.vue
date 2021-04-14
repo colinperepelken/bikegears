@@ -1,5 +1,5 @@
 <template>
-  <div class="box">
+  <div class="box calculator-section">
     <h2 class="title is-4">Table Data <span v-if="bikes.length > 1" class="subtitle">(Scroll right to see all bikes <span class="icon"><i class="fas fa-arrow-right"></i></span>)</span></h2>
     <p>Lighter shades are easier (lower) gears, and darker shades are harder (higher) gears.</p>
     <div :class="{columns: true, 'is-centered': bikes.length === 1, 'is-mobile': true}">

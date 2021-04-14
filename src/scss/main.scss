@@ -2,7 +2,8 @@
 @import 'variables';
 @import '~bulma';
 @import '~bulma-switch';
-@import 'partials/scrollbar';
+@import 'partials/components/scrollbar';
+@import 'partials/views/calculator';
 
 .title {
   font-family: 'Frijole', cursive;
