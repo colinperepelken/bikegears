@@ -1,9 +1,9 @@
 import GearInchResults from "@/components/calculation/gear_inch/GearInchResults";
-import LearnGearRatio from "@/components/calculation/gear_ratio/LearnGearRatio";
+import LearnGearRatio from "@/components/calculation/gear_ratio/learn/LearnGearRatio";
 import LearnGearInch from "@/components/calculation/gear_inch/LearnGearInch";
-import GearRatioChart from "@/components/calculation/gear_ratio/GearRatioChart";
-import GearRatioInsights from "@/components/calculation/gear_ratio/GearRatioInsights";
-import GearRatioTable from "@/components/calculation/gear_ratio/GearRatioTable";
+import GearRatioChart from "@/components/calculation/gear_ratio/calculator/GearRatioChart";
+import GearRatioInsights from "@/components/calculation/gear_ratio/calculator/GearRatioInsights";
+import GearRatioTable from "@/components/calculation/gear_ratio/calculator/GearRatioTable";
 
 
 export const BIKE_COLORS = ["#004777", "#885053", "#ff7700", "#337357", "#00afb5"];
