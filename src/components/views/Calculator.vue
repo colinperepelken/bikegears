@@ -1,14 +1,12 @@
 <template>
     <div>
-
       <BikeButtons></BikeButtons>
-
       <div>
         <BikeParameters></BikeParameters>
         <div class="results-container">
-          <transition name="fade">
-            <component :is="calculationType.results"></component>
-          </transition>
+          <div class="container has-text-left">
+            <component v-for="component in calculationType.results" :is="component" :key="component"></component>
+          </div>
         </div>
       </div>
     </div>
@@ -31,13 +29,6 @@ export default {
 
 <style scoped lang="scss">
 @import '~bulma/sass/utilities/all';
-
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-  opacity: 0;
-}
 
 .results-container {
   position: relative;
