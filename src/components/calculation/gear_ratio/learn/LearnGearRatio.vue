@@ -31,8 +31,8 @@
                       <label class="label has-text-white">Front gear</label>
                       <div class="control">
                         <div class="select">
-                          <select>
-                            <option>34T</option>
+                          <select v-model="exampleFrontGear">
+                            <option :value="gear" v-for="gear in exampleGearOptions" :key="gear">{{gear}}T</option>
                           </select>
                         </div>
                       </div>
@@ -44,8 +44,8 @@
                       <label class="label has-text-white">Rear gear</label>
                       <div class="control">
                         <div class="select">
-                          <select>
-                            <option>11T</option>
+                          <select v-model="exampleRearGear">
+                            <option :value="gear" v-for="gear in exampleGearOptions" :key="gear">{{gear}}T</option>
                           </select>
                         </div>
                       </div>
@@ -57,11 +57,11 @@
                   </div>
 
                   <div class="column vertical-center">
-                    <p>A gear ratio of <b>34:11</b> or <b>{{3.09}}</b></p>
+                    <p>A gear ratio of <b>{{exampleFrontGear}}:{{exampleRearGear}}</b> or <b>{{computeGearRatio(exampleFrontGear, exampleRearGear)}}</b></p>
                   </div>
 
                   <div class="column is-full">
-                    <p>One complete rotation of the crank will cause the rear wheel to rotate <b>3.09</b> times</p>
+                    <p>One complete rotation of the crank will cause the rear wheel to rotate <b>{{computeGearRatio(exampleFrontGear, exampleRearGear)}}</b> times</p>
                   </div>
 
                 </div>
@@ -121,7 +121,7 @@
             Reading articles online is great, but the best way to figure out what gearing is best for you is to ride your current bike (or borrow a friend's).
             Shift into the lowest gear - could you make it up a steep hill comfortably? Now shift into the highest gear and speed up, can you reach a good speed? Or do you 'top out'?
           </p>
-          <p>Once you have tested out a bike in person, come back to this website and experiment with different cassette and chainrings values and hopefully you will find what works best for you.</p>
+          <p>Once you have tested out a bike in person, come back to this website and experiment with different cassette and chainring values and hopefully you will find what works best for you.</p>
         </div>
       </article>
     </div>
@@ -129,8 +129,19 @@
 </template>
 
 <script>
+import ComputeGearRatio from "@/components/calculation/gear_ratio/mixins/ComputeGearRatio";
+import _ from 'lodash';
+
 export default {
-  name: "LearnGearRatio"
+  name: "LearnGearRatio",
+  mixins: [ComputeGearRatio],
+  data() {
+    return {
+      exampleFrontGear: 34,
+      exampleRearGear: 11,
+      exampleGearOptions: _.range(1, 51, 1)
+    }
+  }
 }
 </script>
 
