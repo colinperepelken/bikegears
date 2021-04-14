@@ -57,7 +57,7 @@
 </template>
 
 <script>
-import Message from "@/components/Message";
+import Message from "@/components/partials/Message";
 import {mapMutations} from "vuex";
 import {CALCULATION_TYPES} from "@/constants";
 

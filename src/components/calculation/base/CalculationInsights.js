@@ -1,4 +1,4 @@
-import Message from "@/components/Message";
+import Message from "@/components/partials/Message";
 import {mapGetters, mapState} from "vuex";
 
 export default {

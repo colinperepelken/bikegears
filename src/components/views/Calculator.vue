@@ -15,8 +15,8 @@
 <script>
 import BikeParameters from "@/components/section/BikeParameters";
 import {mapState} from "vuex";
-import Message from "@/components/Message";
-import BikeButtons from "@/components/BikeButtons";
+import Message from "@/components/partials/Message";
+import BikeButtons from "@/components/section/BikeButtons";
 
 export default {
   name: "Calculator",

@@ -16,7 +16,7 @@
 
 <script>
 
-import Message from "@/components/Message";
+import Message from "@/components/partials/Message";
 
 export default {
   name: "GearInchResults",
