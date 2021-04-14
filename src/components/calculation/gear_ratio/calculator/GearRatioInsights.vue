@@ -14,7 +14,7 @@
         Your gear range is <b>{{getGearRange(minRatio, maxRatio)}}</b>%
       </p>
 
-      <p><i>To learn more about gear ratios, visit the <router-link to="/learn">Learn</router-link> section of this site.</i></p>
+      <p><i>To learn more about gear ratios, visit the <router-link to="/learn">Learn</router-link> section.</i></p>
     </Message>
   </div>
 </template>
