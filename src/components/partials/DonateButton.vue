@@ -20,6 +20,13 @@ export default {
 }
 </script>
 
-<style scoped>
-
+<style scoped lang="scss">
+.button {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-image: linear-gradient(59deg, rgb(5, 102, 141), rgb(10, 61, 106));
+  border: none;
+  border-radius: 6px;
+  font-size: .75rem;
+}
 </style>
