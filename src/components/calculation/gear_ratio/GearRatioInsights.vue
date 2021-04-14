@@ -21,10 +21,11 @@
 
 <script>
 import CalculationInsights from "@/components/calculation/base/CalculationInsights";
+import ComputeGearRatio from "@/components/calculation/gear_ratio/mixins/ComputeGearRatio";
 
 export default {
   name: "GearRatioInsights",
-  mixins: [CalculationInsights],
+  mixins: [CalculationInsights, ComputeGearRatio],
   computed: {
     minRatio() {
       // To find the smallest ratio, we divide the smallest chainring by the max cassette cog
@@ -42,11 +43,6 @@ export default {
       return Math.round((this.maxRatio / this.minRatio) * 100);
     },
   },
-  methods: {
-    computeGearRatio(chainring, cog) {
-      return (chainring / cog).toFixed(2);
-    }
-  }
 }
 </script>
 

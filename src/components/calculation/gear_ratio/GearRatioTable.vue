@@ -34,16 +34,15 @@
 import {mapState} from "vuex";
 import _ from 'lodash';
 import {hex2rgba} from "@/helpers";
+import ComputeGearRatio from "@/components/calculation/gear_ratio/mixins/ComputeGearRatio";
 
 export default {
   name: "GearRatioTable",
   computed: {
     ...mapState(['bikes']),
   },
+  mixins: [ComputeGearRatio],
   methods: {
-    computeGearRatio(chainring, cog) {
-      return (chainring / cog).toFixed(2);
-    },
     cassetteCogs(cassetteMin, cassetteMax) {
       return _.range(cassetteMin, cassetteMax + 1, 1);
     },

@@ -15,10 +15,12 @@ import ScatterChart from "@/components/chart/ScatterChart";
 import {hex2rgba} from "@/helpers";
 import _ from 'lodash';
 import {mapState} from "vuex";
+import ComputeGearRatio from "@/components/calculation/gear_ratio/mixins/ComputeGearRatio";
 
 export default {
   name: "GearRatioChart",
   components: {ScatterChart},
+  mixins: [ComputeGearRatio],
   computed: {
     ...mapState(['bikes', 'activeBikeIndex', 'darkMode']),
     loaded() {
@@ -102,11 +104,6 @@ export default {
         height: "20rem",
         position: 'relative'
       }
-    }
-  },
-  methods: {
-    computeGearRatio(chainring, cog) {
-      return parseFloat((chainring / cog).toFixed(2));
     }
   },
 }
