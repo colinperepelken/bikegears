@@ -1,11 +1,11 @@
 <template>
   <div class="container has-text-left bike-parameters">
-    <div class="box">
+    <div>
       <h2 class="title is-4">Bike Settings</h2>
       <div class="columns is-centered is-variable is-5 has-text-centered mb-1" :key="activeBikeIndex"
            @change="updateBike(currentBike)">
 
-        <div class="column">
+        <div class="column box">
           <div class="field">
             <label class="label">Bike name</label>
             <div class="control">
@@ -15,7 +15,7 @@
           </div>
         </div>
 
-        <div class="column" v-if="isFieldEnabled(bikeFields.FIELD_CHAINRINGS)">
+        <div class="column box" v-if="isFieldEnabled(bikeFields.FIELD_CHAINRINGS)">
           <div class="field">
             <label class="label">Chainrings</label>
             <div class="control chainring-control" v-for="(chainring, index) in chainrings" :key="index">
@@ -43,7 +43,7 @@
           </div>
         </div>
 
-        <div class="column" v-if="isFieldEnabled(bikeFields.FIELD_CASSETTE)" @change.stop="updateCassette">
+        <div class="column box" v-if="isFieldEnabled(bikeFields.FIELD_CASSETTE)" @change.stop="updateCassette">
           <!--          <img src="../../assets/cassette.png">-->
           <div class="field">
             <label class="label">Min. Cassette Cog</label>
@@ -69,7 +69,7 @@
           </div>
         </div>
 
-        <div class="column" v-if="isFieldEnabled(bikeFields.FIELD_RIM) || isFieldEnabled(bikeFields.FIELD_WHEEL)">
+        <div class="column box" v-if="isFieldEnabled(bikeFields.FIELD_RIM) || isFieldEnabled(bikeFields.FIELD_WHEEL)">
 
           <div class="field" v-if="isFieldEnabled(bikeFields.FIELD_RIM)">
             <label class="label">Rim size</label>
@@ -101,7 +101,7 @@
           </div>
         </div>
 
-        <div class="column" v-if="isFieldEnabled(bikeFields.FIELD_UNITS)">
+        <div class="column box" v-if="isFieldEnabled(bikeFields.FIELD_UNITS)">
 
           <div class="field">
             <label class="label">Units</label>
@@ -254,15 +254,18 @@ export default {
   margin-bottom: .8rem;
 }
 
-.column {
+.column.box {
 
-  border: 1px solid #ededed;
-  border-radius: 5px;
   margin-left: 1rem;
   margin-right: 1rem;
+  border: 1px solid transparent;
 
-  img {
-    height: 3rem;
+  &:hover {
+    border: 1px solid #ededed;
+  }
+
+  &:not(:last-child) {
+    margin-bottom: 0;
   }
 }
 
