@@ -1,0 +1,20 @@
+/* Firefox */
+body, .columns {
+  scrollbar-width: thin; /* "auto" or "thin" */
+  scrollbar-color: #9c9c9c white; /* scroll thumb and track */
+}
+
+/* Webkit browsers */
+body::-webkit-scrollbar, .columns::-webkit-scrollbar {
+  width: 12px; /* width of the entire scrollbar */
+}
+
+body::-webkit-scrollbar-track, .columns::-webkit-scrollbar-track {
+  background: white; /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb, .columns::-webkit-scrollbar-thumb {
+  background-color: #9c9c9c; /* color of the scroll thumb */
+  border-radius: 20px; /* roundness of the scroll thumb */
+  border: 3px solid white; /* creates padding around scroll thumb */
+}

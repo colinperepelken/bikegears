@@ -17,9 +17,9 @@ export default {
   name: "GearRatioChart",
   components: {ScatterChart},
   computed: {
-    ...mapState(['bikes', 'activeBikeIndex']),
+    ...mapState(['bikes', 'activeBikeIndex', 'darkMode']),
     loaded() {
-      return ! _.isEmpty(this.bikes);
+      return !_.isEmpty(this.bikes);
     },
     chartdata() {
       if (this.loaded) {
@@ -28,8 +28,8 @@ export default {
             return bike.chainrings.map(chainring => {
               return {
                 label: chainring + ' tooth chainring',
-                borderColor: hex2rgba(bike.color, .8),
-                pointBackgroundColor: hex2rgba(bike.color, .8),
+                borderColor: hex2rgba(bike.color, 1),
+                pointBackgroundColor: hex2rgba(bike.color, 1),
                 data: _.range(bike.cassetteMin, bike.cassetteMax + 1, 1).map(cog => {
                   return {
                     x: this.computeGearRatio(chainring, cog),
@@ -46,13 +46,14 @@ export default {
       }
 
       return {};
-    }
-  },
-  data() {
-    return {
-      options: {
+    },
+    options() {
+      return {
         legend: {
-          display: true
+          display: true,
+          labels: {
+            fontColor: this.darkMode ? '#cdcdcd' : '#404040'
+          }
         },
         bezierCurve: false,
         responsive: true,
@@ -61,23 +62,39 @@ export default {
           yAxes: [{
             scaleLabel: {
               display: true,
-              labelString: 'Cassette cog'
+              labelString: 'Cassette cog',
+              fontColor: this.darkMode ? 'white' : 'black'
             },
             stacked: true,
             ticks: {
               min: 5,
               max: 60,
-              reverse: true
+              reverse: true,
+              fontColor: this.darkMode ? 'white' : 'black'
+            },
+            gridLines: {
+              color: this.darkMode ? '#555555' : '#efefef'
             }
           }],
           xAxes: [{
             scaleLabel: {
               display: true,
-              labelString: 'Gear ratio'
+              labelString: 'Gear ratio',
+              fontColor: this.darkMode ? 'white' : 'black'
+            },
+            ticks: {
+              fontColor: this.darkMode ? 'white' : 'black'
+            },
+            gridLines: {
+              color: this.darkMode ? '#555555' : '#efefef'
             }
           }]
         }
-      },
+      }
+    }
+  },
+  data() {
+    return {
       styles: {
         height: "20rem",
         position: 'relative'

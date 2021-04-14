@@ -132,3 +132,20 @@ a:hover {
 strong {
   color: $text-strong;
 }
+
+
+/*
+  Change the colour of the scrollbar, see partials/_scrollbar.scss for details/defaults
+ */
+body, .columns {
+  scrollbar-color: white $grey-dark; /* scroll thumb and track */
+}
+
+body::-webkit-scrollbar-track, .columns::-webkit-scrollbar-track {
+  background: $grey-dark; /* color of the tracking area */
+}
+
+body::-webkit-scrollbar-thumb, .columns::-webkit-scrollbar-thumb {
+  background-color: white; /* color of the scroll thumb */
+  border: 3px solid $grey-dark; /* creates padding around scroll thumb */
+}
