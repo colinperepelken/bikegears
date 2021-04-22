@@ -1,9 +1,9 @@
-import GearInchResults from "@/components/calculation/gear_inch/GearInchResults";
 import LearnGearRatio from "@/components/calculation/gear_ratio/learn/LearnGearRatio";
-import LearnGearInch from "@/components/calculation/gear_inch/LearnGearInch";
+import LearnGearInch from "@/components/calculation/gear_inch/learn/LearnGearInch";
 import GearRatioChart from "@/components/calculation/gear_ratio/calculator/GearRatioChart";
 import GearRatioInsights from "@/components/calculation/gear_ratio/calculator/GearRatioInsights";
 import GearRatioTable from "@/components/calculation/gear_ratio/calculator/GearRatioTable";
+import GearInchChart from "@/components/calculation/gear_inch/calculator/GearInchChart";
 
 
 export const BIKE_COLORS = ["#004777", "#885053", "#ff7700", "#337357", "#00afb5"];
@@ -29,7 +29,7 @@ export const CALCULATION_TYPES = [
         id: 'gear_inch',
         name: 'Gear inches',
         fields: [BIKE_FIELDS.FIELD_CHAINRINGS, BIKE_FIELDS.FIELD_CASSETTE, BIKE_FIELDS.FIELD_RIM, BIKE_FIELDS.FIELD_WHEEL],
-        results: [GearInchResults],
+        results: [GearInchChart],
         learn: LearnGearInch,
         enabled: true
     },
