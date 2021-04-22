@@ -5,6 +5,8 @@ export default {
     components: {Message},
     computed: {
         ...mapState(['activeBikeIndex', 'bikes']),
-        ...mapGetters(['currentBike'])
     },
+    methods: {
+        ...mapGetters(['currentBike'])
+    }
 }

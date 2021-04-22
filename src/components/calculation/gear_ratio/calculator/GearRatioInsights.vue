@@ -1,46 +1,15 @@
 <template>
-  <div>
-    <Message :color="currentBike.color" :message-type="''">
-      <template slot="header">
-        <span class="icon">
-          <i class="fas fa-info-circle"></i>
-        </span>
-        <span>Insights ({{currentBike.name}})</span>
-      </template>
-
-      <p class="mb-2">
-        Your minimum gear ratio is <b>{{minRatio}}</b>.
-        Your highest gear ratio is <b>{{maxRatio}}</b>.
-        Your gear range is <b>{{getGearRange(minRatio, maxRatio)}}</b>%
-      </p>
-
-      <p><i>To learn more about gear ratios, visit the <router-link to="/learn">Learn</router-link> section.</i></p>
-    </Message>
-  </div>
+  <BaseInsights :compute-function="this.computeGearRatio" computation-name="gear ratio"></BaseInsights>
 </template>
 
 <script>
-import CalculationInsights from "@/components/calculation/mixins/base/CalculationInsights";
 import ComputeGearRatio from "@/components/calculation/gear_ratio/mixins/ComputeGearRatio";
-import CalculationHelpers from "@/components/calculation/mixins/CalculationHelpers";
+import BaseInsights from "@/components/calculation/BaseInsights";
 
 export default {
   name: "GearRatioInsights",
-  mixins: [CalculationInsights, ComputeGearRatio, CalculationHelpers],
-  computed: {
-    minRatio() {
-      // To find the smallest ratio, we divide the smallest chainring by the max cassette cog
-      let smallestChainring = this.currentBike.chainrings[0];
-
-      return (smallestChainring / this.currentBike.cassetteMax).toFixed(2);
-    },
-    maxRatio() {
-      // To find the largest ratio, we divide the largest chainring by the min cassette cog
-      let largestChainring = this.currentBike.chainrings[this.currentBike.chainrings.length - 1];
-
-      return (largestChainring / this.currentBike.cassetteMin).toFixed(2);
-    },
-  },
+  components: {BaseInsights},
+  mixins: [ComputeGearRatio]
 }
 </script>
 
