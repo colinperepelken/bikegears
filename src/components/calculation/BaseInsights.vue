@@ -8,13 +8,15 @@
         <span>Insights ({{currentBike.name}})</span>
       </template>
 
-      <p class="mb-2">
-        Your minimum {{computationName}} is <b>{{minValue}}</b>.
-        Your highest {{computationName}} is <b>{{maxValue}}</b>.
-        Your gear range is <b>{{getGearRange(minValue, maxValue)}}</b>%
-      </p>
+      <slot>
+        <p class="mb-2">
+          Your minimum {{computationName}} is <b>{{minValue}}</b>.
+          Your highest {{computationName}} is <b>{{maxValue}}</b>.
+          Your gear range is <b>{{getGearRange(minValue, maxValue)}}</b>%
+        </p>
 
-      <p><i>To learn more, visit the <router-link to="/learn">Learn</router-link> section.</i></p>
+        <p><i>To learn more, visit the <router-link to="/learn">Learn</router-link> section.</i></p>
+      </slot>
     </Message>
   </div>
 </template>
