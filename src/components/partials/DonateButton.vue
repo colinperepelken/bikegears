@@ -1,5 +1,5 @@
 <template>
-  <a class="button is-info is-small" :href="donateUrl" target="_blank">
+  <a class="button is-info" :href="donateUrl" target="_blank">
     <span class="icon mr-2">
       <i class="fas fa-coffee"></i>
     </span>
