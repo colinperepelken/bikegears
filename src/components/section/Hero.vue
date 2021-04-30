@@ -107,7 +107,15 @@ export default {
   text-transform: uppercase;
 }
 
+[data-theme="dark"] {
+  section.hero.is-info {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, .2), rgba(0, 0, 0, 0.6)),
+    url('../../assets/hero.jpg');
+  }
+}
+
 section.hero.is-info {
+
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, .3), rgba(0, 0, 0, 0.75)),
   url('../../assets/hero.jpg');
   background-size: cover;
