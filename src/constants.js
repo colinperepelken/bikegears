@@ -6,7 +6,13 @@ import GearRatioTable from "@/components/calculation/gear_ratio/calculator/GearR
 import GearInchChart from "@/components/calculation/gear_inch/calculator/GearInchChart";
 import GearInchInsights from "@/components/calculation/gear_inch/calculator/GearInchInsights";
 import GearInchTable from "@/components/calculation/gear_inch/calculator/GearInchTable";
-
+import LearnMetersOfDevelopment from "@/components/calculation/meters_of_development/learn/LearnMetersOfDevelopment";
+import MetersOfDevelopmentChart
+    from "@/components/calculation/meters_of_development/calculator/MetersOfDevelopmentChart";
+import MetersOfDevelopmentInsights
+    from "@/components/calculation/meters_of_development/calculator/MetersOfDevelopmentInsights";
+import MetersOfDevelopmentTable
+    from "@/components/calculation/meters_of_development/calculator/MetersOfDevelopmentTable";
 
 export const BIKE_COLORS = ["#004777", "#885053", "#ff7700", "#337357", "#00afb5"];
 
@@ -39,9 +45,9 @@ export const CALCULATION_TYPES = [
         id: 'gear_meters',
         name: 'Meters of development',
         fields: [BIKE_FIELDS.FIELD_CHAINRINGS, BIKE_FIELDS.FIELD_CASSETTE, BIKE_FIELDS.FIELD_RIM, BIKE_FIELDS.FIELD_WHEEL],
-        results: null,
-        learn: null,
-        enabled: false
+        results: [MetersOfDevelopmentChart, MetersOfDevelopmentInsights, MetersOfDevelopmentTable],
+        learn: LearnMetersOfDevelopment,
+        enabled: true
     },
     {
         id: 'speed',
