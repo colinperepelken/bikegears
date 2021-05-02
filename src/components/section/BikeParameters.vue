@@ -107,12 +107,12 @@
             <label class="label">Units</label>
             <div class="control">
               <label class="radio">
-                <input type="radio" name="answer">
-                km/h
+                <input type="radio" :value="speedUnitsMetric" v-model="currentBike.speedUnits">
+                {{speedUnitsMetric}}
               </label>
               <label class="radio">
-                <input type="radio" name="answer">
-                mph
+                <input type="radio" :value="speedUnitsImperial" v-model="currentBike.speedUnits">
+                {{speedUnitsImperial}}
               </label>
             </div>
           </div>
@@ -126,7 +126,7 @@
 <script>
 import {mapGetters, mapMutations, mapState} from 'vuex';
 import _ from "lodash";
-import {BIKE_FIELDS, DEFAULT_BIKE_SETTINGS, RIM_SIZES} from "@/constants";
+import {BIKE_FIELDS, DEFAULT_BIKE_SETTINGS, RIM_SIZES, SPEED_UNITS_IMPERIAL, SPEED_UNITS_METRIC} from "@/constants";
 
 export default {
   name: "BikeParameters",
@@ -136,6 +136,8 @@ export default {
       bikeFields: {},
       rimOptions: RIM_SIZES,
       tireUnits: 'mm',
+      speedUnitsMetric: SPEED_UNITS_METRIC,
+      speedUnitsImperial: SPEED_UNITS_IMPERIAL,
       tireSize: DEFAULT_BIKE_SETTINGS.tireSize,
       cassetteMin: DEFAULT_BIKE_SETTINGS.cassetteMin,
       cassetteMax: DEFAULT_BIKE_SETTINGS.cassetteMax

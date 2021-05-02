@@ -36,7 +36,7 @@ export default {
                 pointBackgroundColor: hex2rgba(bike.color, 1),
                 data: _.range(bike.cassetteMin, bike.cassetteMax + 1, 1).map(cog => {
                   return {
-                    x: this.computeFunction(chainring, cog, bike.rimSize, bike.tireSize),
+                    x: this.computeFunction(chainring, cog, bike.rimSize, bike.tireSize, bike.speedUnits),
                     y: cog
                   }
                 }),

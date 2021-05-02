@@ -72,6 +72,10 @@ body {
   color: $text;
 }
 
+label.radio:hover {
+  color: $text;
+}
+
 select {
   background-color: $background;
   color: $text;

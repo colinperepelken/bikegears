@@ -13,6 +13,10 @@ import MetersOfDevelopmentInsights
     from "@/components/calculation/meters_of_development/calculator/MetersOfDevelopmentInsights";
 import MetersOfDevelopmentTable
     from "@/components/calculation/meters_of_development/calculator/MetersOfDevelopmentTable";
+import SpeedChart from "@/components/calculation/speed/calculator/SpeedChart";
+import SpeedInsights from "@/components/calculation/speed/calculator/SpeedInsights";
+import SpeedTable from "@/components/calculation/speed/calculator/SpeedTable";
+import LearnSpeed from "@/components/calculation/speed/learn/LearnSpeed";
 
 export const BIKE_COLORS = ["#004777", "#885053", "#ff7700", "#337357", "#00afb5"];
 
@@ -53,11 +57,14 @@ export const CALCULATION_TYPES = [
         id: 'speed',
         name: 'Speed',
         fields: [BIKE_FIELDS.FIELD_CHAINRINGS, BIKE_FIELDS.FIELD_CASSETTE, BIKE_FIELDS.FIELD_RIM, BIKE_FIELDS.FIELD_WHEEL, BIKE_FIELDS.FIELD_UNITS],
-        results: null,
-        learn: null,
-        enabled: false
+        results: [SpeedChart, SpeedInsights, SpeedTable],
+        learn: LearnSpeed,
+        enabled: true
     }
 ];
+
+export const SPEED_UNITS_METRIC = 'km/h';
+export const SPEED_UNITS_IMPERIAL = 'mph';
 
 export const DEFAULT_BIKE_SETTINGS = {
     chainrings: [34, 50],
@@ -65,7 +72,8 @@ export const DEFAULT_BIKE_SETTINGS = {
     cassetteMax: 28,
     name: 'Bike',
     rimSize: 622,
-    tireSize: 23
+    tireSize: 23,
+    speedUnits: SPEED_UNITS_METRIC
 };
 
 // BSD is bead seat diameter in mm
