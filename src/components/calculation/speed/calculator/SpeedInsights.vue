@@ -23,11 +23,11 @@ export default {
     ...mapGetters(['currentBike']),
     minValue() {
       let minChainring = this.currentBike.chainrings[0];
-      return this.computeSpeed(minChainring, this.currentBike.cassetteMax, this.currentBike.rimSize, this.currentBike.tireSize);
+      return this.computeSpeed(minChainring, this.currentBike.cassetteMax, this.currentBike.rimSize, this.currentBike.tireSize).toFixed(2);
     },
     maxValue() {
       let maxChainring = this.currentBike.chainrings[this.currentBike.chainrings.length - 1];
-      return this.computeSpeed(maxChainring, this.currentBike.cassetteMin, this.currentBike.rimSize, this.currentBike.tireSize);
+      return this.computeSpeed(maxChainring, this.currentBike.cassetteMin, this.currentBike.rimSize, this.currentBike.tireSize).toFixed(2);
     }
   }
 }
