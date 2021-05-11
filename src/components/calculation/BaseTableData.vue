@@ -18,7 +18,7 @@
               <th>{{cog}}</th>
               <td class="table-value" v-for="(chainring, index) in bike.chainrings" :key="index">
                 <span :style="getCellStyle(computeGearRatio(chainring, cog), bike.color)">
-                   {{computeFunction(chainring, cog, bike.rimSize, bike.tireSize).toFixed(2)}}
+                   {{computeFunction(chainring, cog, bike.rimSize, bike.tireSize, bike.speedUnits).toFixed(2)}}
                 </span>
               </td>
             </tr>

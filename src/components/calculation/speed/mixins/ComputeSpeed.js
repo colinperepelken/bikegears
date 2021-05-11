@@ -13,11 +13,12 @@ export default {
         computeSpeed(chainring, cog, rimSize, tireSize, units) {
             let speedImperial = this.computeGearInches(chainring, cog, rimSize, tireSize) * this.cadence * (Math.PI / 1056);
 
+            // Return mph
             if (units === SPEED_UNITS_IMPERIAL) {
                 return speedImperial;
             }
 
-            return speedImperial * 1.60934;
+            return speedImperial * 1.60934; // Convert to km/h
         },
         computeWheelDiameter(rimSize, tireSize) {
             return rimSize + (tireSize * 2);
