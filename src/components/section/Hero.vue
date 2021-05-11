@@ -28,7 +28,7 @@
               <router-link to="/learn" :class="{'navbar-item': true, 'is-active': isActivePath('/learn')}">Learn
               </router-link>
 
-              <span class="navbar-item">
+              <span v-if="showDonateButton" class="navbar-item">
                 <DonateButton></DonateButton>
               </span>
 
@@ -83,6 +83,7 @@ export default {
     return {
       currentType: CALCULATION_TYPES[0].id,
       showMobileMenu: false,
+      showDonateButton: false
     }
   },
   mounted() {
