@@ -57,11 +57,11 @@
                   </div>
 
                   <div class="column vertical-center">
-                    <p>A gear ratio of <b>{{exampleFrontGear}}:{{exampleRearGear}}</b> or <b>{{computeGearRatio(exampleFrontGear, exampleRearGear)}}</b></p>
+                    <p>A gear ratio of <b>{{exampleFrontGear}}:{{exampleRearGear}}</b> or <b>{{computeGearRatio(exampleFrontGear, exampleRearGear).toFixed(2)}}</b></p>
                   </div>
 
                   <div class="column is-full">
-                    <p>One complete rotation of the crank will cause the rear wheel to rotate <b>{{computeGearRatio(exampleFrontGear, exampleRearGear)}}</b> times</p>
+                    <p>One complete rotation of the crank will cause the rear wheel to rotate <b>{{computeGearRatio(exampleFrontGear, exampleRearGear).toFixed(2)}}</b> times</p>
                   </div>
 
                 </div>
