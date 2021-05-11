@@ -1,9 +1,9 @@
 <template>
   <div class="has-text-left">
+    <h2 class="title is-4">How is speed calculated?</h2>
     <Message>
       Under construction!
     </Message>
-
   </div>
 </template>
 
