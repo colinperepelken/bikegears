@@ -78,6 +78,8 @@ export const DEFAULT_BIKE_SETTINGS = {
 
 // BSD is bead seat diameter in mm
 export const RIM_SIZES = [
+    {name: '20" / ISO 406mm', bsd: 406},
+    {name: '20" / ISO 451mm', bsd: 451},
     {name: '27"', bsd: 630},
     {name: '700c / 29"', bsd: 622},
     {name: '650b / 27.5"', bsd: 571},
